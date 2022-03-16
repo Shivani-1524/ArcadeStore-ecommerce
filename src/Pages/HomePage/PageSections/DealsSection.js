@@ -4,7 +4,7 @@ import RazeDeal from "../../../Assets/HomeImages/raze-val.jfif"
 
 const DealsSection = () => {
     return (
-        <div className="section deals-container mg-t-70">
+        <section className="section deals-container mg-t-70">
             <h1 className="new-font center-txt">
                 DEAL OF THE DAY
             </h1>
@@ -22,7 +22,7 @@ const DealsSection = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

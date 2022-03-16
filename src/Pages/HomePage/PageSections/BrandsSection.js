@@ -26,7 +26,7 @@ const BrandsSection = () => {
     },
     ]
     return (
-        <div className="section deals-container mg-t-70">
+        <section className="section deals-container mg-t-70">
             <h1 className="new-font center-txt">
                 FEATURED BRANDS
             </h1>
@@ -35,7 +35,7 @@ const BrandsSection = () => {
                     <BrandImage key={index} imgSrc={brand.imgSrc} altTxt={brand.altTxt} />
                 )}
             </div>
-        </div>
+        </section>
     )
 }
 

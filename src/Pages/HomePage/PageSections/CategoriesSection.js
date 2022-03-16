@@ -8,7 +8,7 @@ import PS5 from "../../../Assets/Categories/ps5.jpg"
 
 const CategoriesSection = () => {
     return (
-        <div className="section categories-container mg-t-60">
+        <section className="section categories-container mg-t-60">
             <h1 className="new-font center-txt">
                 CATEGORIES TO BAG
             </h1>
@@ -18,7 +18,7 @@ const CategoriesSection = () => {
                 <CategoryCard img={CyberPunk} caption='Game Discs' />
                 <CategoryCard img={Headphone} caption='Gadgets and Accessories' />
             </div>
-        </div>
+        </section>
     )
 }
 

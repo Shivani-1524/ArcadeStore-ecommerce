@@ -7,7 +7,7 @@ import CollectiblesVal from "../../../Assets/HomeImages/collectibles-val.jfif"
 const ArrivalsSection = () => {
 
     return (
-        <div className="section arrivals-container mg-t-70">
+        <section className="section arrivals-container mg-t-70">
             <h1 className="new-font center-txt">
                 NEW ARRIVALS
             </h1>
@@ -15,7 +15,7 @@ const ArrivalsSection = () => {
                 <NewArrivalCard imgSrc={XiaoHome} title='Fresh Collection of Genshin Posters' />
                 <NewArrivalCard imgSrc={CollectiblesVal} title='Valorant collectibles' />
             </div>
-        </div>
+        </section>
     )
 }
 
