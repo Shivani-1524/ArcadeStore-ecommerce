@@ -10,8 +10,8 @@ const Navbar = () => {
                 <img src={NavLogo} alt="logo" />
             </div>
             <div class="nav-items">
+                <Link to="/" class="nav-link sm-title hide-md" href="./">About Us</Link>
                 <a class="nav-link sm-title hide-md" href="./Products/products.html">Shop</a>
-                <a class="nav-link sm-title hide-md" href="./">Categories</a>
             </div>
             <div class="nav-space"></div>
             <div class="nav-icon-items">
