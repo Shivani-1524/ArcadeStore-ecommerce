@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom"
 import NavLogo from "../../Assets/nav-logo.png"
+import './navbar.css'
 
 const Navbar = () => {
     const isLoggedIn = localStorage.getItem('userToken')
@@ -28,8 +29,8 @@ const Navbar = () => {
                     </button>
                 </Link> :
                     <Link to='/logout'>
-                        <button onClick={handleUserLogout} id="dark-bg-icon logouticon" className="btn icon-btn hide-md">
-                            <i style={{ color: 'white' }} class="fa fas fa-solid fa-right-from-bracket"></i>
+                        <button onClick={handleUserLogout} id="dark-bg-icon" className="btn icon-btn hide-md">
+                            <i class="fa fas fa-solid fa-arrow-right-from-bracket logout-icon"></i>
                         </button>
                     </Link>
                 }
