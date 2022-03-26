@@ -1,5 +1,5 @@
 import React from 'react'
-import './auth-pages.css'
+import './AuthPage.css'
 import Navbar from '../../Components/Navbar/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'

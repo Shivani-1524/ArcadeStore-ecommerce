@@ -1,5 +1,5 @@
 import React from 'react'
-import './auth-pages.css'
+import './AuthPage.css'
 import { Link } from 'react-router-dom'
 
 const LogoutPage = () => {
