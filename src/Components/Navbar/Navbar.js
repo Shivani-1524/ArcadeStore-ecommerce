@@ -30,7 +30,7 @@ const Navbar = () => {
                 </Link> :
                     <Link to='/logout'>
                         <button onClick={handleUserLogout} id="dark-bg-icon" className="btn icon-btn hide-md">
-                            <i class="fa fas fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+                            <i className="fa fas fa-solid fa-arrow-right-from-bracket logout-icon"></i>
                         </button>
                     </Link>
                 }

@@ -1,27 +1,48 @@
 import React from 'react'
 import './auth-pages.css'
 import Navbar from '../../Components/Navbar/Navbar'
-import { Link, Navigate } from 'react-router-dom'
-import { useState } from 'react/cjs/react.development'
+import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import FormInput from './AuthComponents/FormInput'
 const axios = require('axios');
 
 const SignupPage = () => {
+    const navigate = useNavigate()
+    const [userExistError, setUserExistError] = useState(false);
+    const [signupError, setSignupError] = useState(false);
     const [signupData, setSignupData] = useState({
         firstName: '', lastName: '', email: '', password: '',
     });
-    const handleUserSignup = async () => {
-        console.log({ ...signupData })
+    const handleUserSignup = async (e) => {
+        e.preventDefault()
         try {
             const res = await axios.post(
                 '/api/auth/signup',
-                { ...signupData }
+                JSON.stringify({ ...signupData })
             )
-            localStorage.setItem("userToken", res.data.encodedToken);
-            Navigate("/")
-        } catch (err) {
-            console.error(err)
+            console.log(res)
+            if (res.status === 200) {
+                localStorage.setItem("userToken", res.data.encodedToken);
+                navigate("/")
+                setUserExistError(false)
+                setSignupError(false)
+            }
+        } catch (error) {
+            setSignupError(true)
+            if (error.response.status === 422) {
+                setSignupError(false)
+                setUserExistError(true)
+                return;
+            }
         }
     }
+
+    // const formFieldData = [
+    //     { labelFor: 'firstName', labelTitle: 'First Name', placeholderText: 'Enter First Name', objKey: 'firstName' },
+    //     { labelFor: 'lastName', labelTitle: 'Last Name', placeholderText: 'Enter Last Name', objKey: 'lastName' },
+    //     { labelFor: 'email', labelTitle: 'Email', placeholderText: 'Enter email address', objKey: 'email' },
+    //     { labelFor: 'password', labelTitle: 'Password', placeholderText: "6+ characters", objKey: 'password' }
+    // ]
 
     return (
         <div>
@@ -29,40 +50,41 @@ const SignupPage = () => {
             <div className="auth-container">
                 <div className="auth-card">
                     <p className="md-title center-txt">Sign Up</p>
-                    <div className="input-flex-row mg-t-10">
-                        <div className="mg-t-20">
-                            <label className="input-label sm-title" htmlFor="firstname">First Name</label>
-                            <input onChange={(e) => setSignupData(prev => ({ ...prev, firstName: e.target.value }))} className="user-input" id="firstname" type="text" placeholder="Enter first name" />
-                        </div>
-                        <div className="mg-t-20">
-                            <label className="input-label sm-title" htmlFor="lastname">Last Name</label>
-                            <input onChange={(e) => setSignupData(prev => ({ ...prev, lastName: e.target.value }))} className="user-input" id="lastname" type="text" placeholder="Enter last name" />
-                        </div>
-                    </div>
-                    <div className="mg-t-10">
-                        <label className="input-label sm-title" htmlFor="email">Email</label>
-                        <input className="user-input" onChange={(e) => setSignupData(prev => ({ ...prev, email: e.target.value }))} id="email" type="email" placeholder="Enter email address" />
-                    </div>
-                    <div className="mg-t-10">
-                        <label className="input-label sm-title" htmlFor="password">Password</label>
-                        <input className="user-input" onChange={(e) => setSignupData(prev => ({ ...prev, password: e.target.value }))} id="password" type="password" placeholder="6+ characters" />
-                    </div>
-                    <div className="flex-between mg-t-20">
-                        <div className="check-container">
-                            <input type="checkbox" id="rememberme" htmlFor="rememberme" />
-                            <label for="rememberme">Remember me</label>
-                        </div>
-                    </div>
-                    <button onClick={handleUserSignup} className="btn primary-btn solid mg-t-20">
-                        Sign Up
-                    </button>
+                    <form>
+                        <div className="input-flex-row mg-t-10">
+                            <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, firstName: e.target.value }))}
+                                props={{ labelFor: 'firstName', labelTitle: 'First Name', placeholderText: 'Enter First Name', objKey: 'firstName', inputTypr: 'text' }} />
 
-                    <Link to='/login'>
-                        <button className="btn warning-outlined-btn mg-t-10">
-                            Existing User? Login
+                            <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, lastName: e.target.value }))}
+                                props={{ labelFor: 'lastName', labelTitle: 'Last Name', placeholderText: 'Enter Last Name', objKey: 'lastName', inputType: 'text' }} />
+                        </div>
+                        <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, lastName: e.target.value }))}
+                            props={{ labelFor: 'email', labelTitle: 'Email', placeholderText: 'Enter email address', objKey: 'email', inputType: 'email' }} />
+
+                        <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, password: e.target.value }))}
+                            props={{ labelFor: 'password', labelTitle: 'Password', placeholderText: "6+ characters", objKey: 'password', inputType: 'password' }} />
+
+                        <div className="flex-between">
+                            <div className="flex-between mg-t-20">
+                                <div className="check-container">
+                                    <input type="checkbox" id="rememberme" htmlFor="rememberme" />
+                                    <label htmlFor="rememberme">Remember me</label>
+                                </div>
+                            </div>
+                            <Link to='/login'>
+                                <p className='violet-txt bold mg-t-20'>
+                                    Existing User? Login
+                                </p>
+                            </Link>
+                        </div>
+                        <button type="submit" onClick={(e) => handleUserSignup(e)} className="btn primary-btn solid mg-t-20">
+                            Sign Up
                         </button>
-                    </Link>
+                    </form>
+                    {userExistError && <p className='orange-txt bold center-txt sm-txt mg-t-10'>User already exists. Please try logging in.</p>}
+                    {signupError && <p className='orange-txt bold center-txt sm-txt mg-t-10'>An Error ocurred. Please try again later.</p>}
                 </div>
+
             </div>
         </div>
     )
