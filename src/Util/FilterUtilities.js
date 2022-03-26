@@ -1,4 +1,4 @@
-import { initialState } from '../Reducers/filter-reducer'
+import { initialState } from '../Reducers/FilterReducer'
 
 const useFilterFunc = (filterFuncArr, data, state) => {
     let copiedData = [...data]
@@ -16,11 +16,11 @@ const sortItems = (data, state) => {
         )
     } else if (state.sortBy == 'LOW_TO_HIGH') {
         sortedData.sort((item1, item2) =>
-            parseInt(item1.currentprice) - parseInt(item2.currentprice)
+            item1.currentprice - item2.currentprice
         )
     } else if (state.sortBy == 'HIGH_TO_LOW') {
         sortedData.sort((item1, item2) =>
-            parseInt(item2.currentprice) - parseInt(item1.currentprice)
+            item2.currentprice - item1.currentprice
         )
     }
     return sortedData
@@ -35,7 +35,7 @@ const outOfStockFilter = (data, state) => {
 }
 
 const priceFilter = (data, state) => {
-    return [...data].filter(item => parseInt(item.currentprice) <= state.pricerange)
+    return [...data].filter(item => item.currentprice <= state.pricerange)
 }
 
 const clearFilter = (data, state) => {

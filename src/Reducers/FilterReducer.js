@@ -16,7 +16,7 @@ const initialState = {
     },
     pricerange: 70000,
     searchVal: "",
-    clearfilters: false
+    clearfilters: true
 };
 
 const filterReducer = (state, { type, payload: { filterKey, value } }) => {

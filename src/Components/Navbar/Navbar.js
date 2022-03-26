@@ -2,10 +2,8 @@ import React from 'react';
 import "./Navbar.css";
 import { Link } from "react-router-dom"
 import NavLogo from "../../Assets/nav-logo.png"
-import { useFilter } from '../../Contexts/filter-controller'
 
 const Navbar = () => {
-    const { dispatch, filteredState } = useFilter()
     return (
         <nav className="navbar">
             <div className="nav-logo">

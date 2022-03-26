@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { FilterProvider } from './Contexts/filter-controller'
+import { FilterProvider } from './Contexts/FilterProvider'
 import { makeServer } from "./server";
 import { BrowserRouter } from 'react-router-dom'
 

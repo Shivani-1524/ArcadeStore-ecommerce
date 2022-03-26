@@ -1,12 +1,16 @@
 import React from 'react'
 import "./Sidenav.css";
-import { useFilter } from '../../../../Contexts/filter-controller'
+import { useFilter } from '../../../../Contexts/FilterProvider'
 
 const Sidenav = () => {
 
     const { dispatch, filteredState } = useFilter()
 
-    const handleClearFilters = () => dispatch({ type: "CLEAR_ALL", payload: { filterKey: true, value: true } })
+    // const handleClearFilters = () => {
+    //     console.log('dawdawdawd')
+
+    // }
+    //dosent work unless function is inline
 
 
     const categoryFilterObject = [
@@ -122,7 +126,7 @@ const Sidenav = () => {
         <aside className="filters-container light-txt">
             <div className="filter-header">
                 <p className="sm-title">FILTERS</p>
-                <p onClick={(e) => handleClearFilters} className="red-txt n-wt xsm-title filter-clear">CLEAR ALL</p>
+                <p onClick={() => dispatch({ type: "CLEAR_ALL", payload: { filterKey: true, value: true } })} className="red-txt n-wt xsm-title filter-clear">CLEAR ALL</p>
             </div>
             <div>
                 <div className="filter-header">

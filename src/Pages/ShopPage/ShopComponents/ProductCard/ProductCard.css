@@ -14,5 +14,5 @@
 }
 
 .card:hover {
-  cursor: pointer !important;
+  cursor: pointer;
 }
