@@ -1,8 +1,7 @@
 import React from 'react'
 import '../HomePage.css'
-import NewArrivalCard from '../../../Components/NewArrivalCard/NewArrivalCard'
-import XiaoHome from "../../../Assets/HomeImages/xiao-genshin.jfif"
-import CollectiblesVal from "../../../Assets/HomeImages/collectibles-val.jfif"
+import NewArrivalCard from '../HomeComponents/NewArrivalCard'
+import { XiaoHome, CollectiblesVal } from './index'
 
 const ArrivalsSection = () => {
 

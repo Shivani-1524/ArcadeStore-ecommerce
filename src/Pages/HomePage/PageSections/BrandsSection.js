@@ -1,11 +1,7 @@
 import React from 'react'
 import '../HomePage.css'
-import BrandImage from '../../../Components/BrandImage/BrandImage'
-import Tencent from "../../../Assets/Brands/tencent.png"
-import Sony from "../../../Assets/Brands/sony.png"
-import Nvidea from "../../../Assets/Brands/nvidea.png"
-import Intel from "../../../Assets/Brands/intel.png"
-import EA from "../../../Assets/Brands/electronics-arts.png"
+import BrandImage from '../HomeComponents/BrandImage'
+import { Tencent, Sony, EA, Intel, Nvidea } from './index'
 
 const BrandsSection = () => {
     const featuredBrands = [{

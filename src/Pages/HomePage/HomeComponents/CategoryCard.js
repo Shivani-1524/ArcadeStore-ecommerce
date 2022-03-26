@@ -1,5 +1,5 @@
 import React from 'react'
-import './CategoryCard.css'
+import '../HomePage.css'
 
 const CategoryCard = ({ img, caption }) => {
     return (

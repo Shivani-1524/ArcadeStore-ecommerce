@@ -1,10 +1,7 @@
 import React from 'react'
 import '../HomePage.css'
-import CategoryCard from '../../../Components/CategoryCard/CategoryCard'
-import CyberPunk from "../../../Assets/Categories/cyberpunk.jfif"
-import Headphone from "../../../Assets/Categories/headphone.jpg"
-import Hoodie from "../../../Assets/Categories/hoodie.png"
-import PS5 from "../../../Assets/Categories/ps5.jpg"
+import CategoryCard from '../HomeComponents/CategoryCard'
+import { CyberPunk, Headphone, Hoodie, PS5 } from './index.js'
 
 const CategoriesSection = () => {
     return (

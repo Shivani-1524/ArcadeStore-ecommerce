@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Pages/HomePage/HomePage.css'
+import '../HomePage.css'
 
 const BrandImage = ({ imgSrc, altTxt }) => {
     return (
