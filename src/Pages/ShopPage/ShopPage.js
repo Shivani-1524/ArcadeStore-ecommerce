@@ -1,14 +1,7 @@
-import React from 'react'
-import Navbar from "../../Components/Navbar/Navbar"
-import ProductCard from '../../Components/ProductCard/ProductCard'
-import Sidenav from '../../Components/Sidenav/Sidenav'
+import React, { useState, useEffect } from 'react'
 import "./ShopPage.css"
-import { useState, useEffect } from 'react'
-import { useFilter } from '../../Contexts/filter-controller'
-import { useFilterFunc, filterCategories, sortItems, searchItems, outOfStockFilter, priceFilter, filterByGameCategory } from '../../Util/filter-utilities.js'
+import { Navbar, ProductCard, Sidenav, useFilter, useFilterFunc, filterCategories, sortItems, searchItems, outOfStockFilter, priceFilter, filterByGameCategory } from './index'
 
-// import { v4 as uuid } from "uuid";
-// import ZhongliPoster from "../../Assets/Products/zhongli-poster.jfif"
 const ShopPage = () => {
 
     const [shopData, setShopData] = useState(false);
@@ -45,4 +38,4 @@ const ShopPage = () => {
     )
 }
 
-export default ShopPage
+export { ShopPage }

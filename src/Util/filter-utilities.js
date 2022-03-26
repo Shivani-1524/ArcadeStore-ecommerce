@@ -43,15 +43,12 @@ const clearFilter = (data, state) => {
 }
 
 const filterCategories = (data, state) => {
-    let flag = 1;
+    let filterEnabled = false;
     let dataList = [...data]
     let filteredList = []
     for (const keyVal in state.categories) {
-        if (keyVal === 'showGameCDs') {
-            console.log('TSDDSDSD')
-        }
         if (state.categories[keyVal]) {
-            flag = 2;
+            filterEnabled = true;
             let newFilterList = [...data].filter((item) => {
                 console.log(item.categoryName, item.categoryName === keyVal, keyVal)
                 return item.categoryName === keyVal.toString()
@@ -59,21 +56,21 @@ const filterCategories = (data, state) => {
             filteredList = filteredList.concat(newFilterList)
         }
     }
-    return flag == 2 ? filteredList : dataList
+    return filterEnabled ? filteredList : dataList
 }
 
 const filterByGameCategory = (data, state) => {
-    let flag = 1;
+    let gameFilterChecked = false;
     let dataList = [...data]
     let filteredList = []
     for (const keyVal in state.gameCategory) {
         if (state.gameCategory[keyVal]) {
-            flag = 2;
+            gameFilterChecked = true
             let newFilterList = [...data].filter((item) => item.game === keyVal.toString())
             filteredList = filteredList.concat(newFilterList)
         }
     }
-    return flag == 2 ? filteredList : dataList
+    return gameFilterChecked ? filteredList : dataList
 }
 
 export { useFilterFunc, clearFilter, priceFilter, outOfStockFilter, searchItems, sortItems, filterCategories, filterByGameCategory }
