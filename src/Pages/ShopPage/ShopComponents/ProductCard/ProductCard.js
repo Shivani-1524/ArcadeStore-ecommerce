@@ -7,7 +7,7 @@ const ProductCard = (props) => {
     const [toggleLike, setToggleLike] = useState(false);
 
     const { _id, title, originalprice, currentprice, discount, reviews, rating, imgSrc, inStock, isFav, altTxt } = props.productdetails;
-    console.log(title, discount)
+
     return (
 
         <div className={inStock ? "card ver-card no-bg-color" : "card ver-card no-bg-color overlay"} >

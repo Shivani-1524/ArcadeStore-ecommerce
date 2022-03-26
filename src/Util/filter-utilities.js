@@ -50,7 +50,6 @@ const filterCategories = (data, state) => {
         if (state.categories[keyVal]) {
             filterEnabled = true;
             let newFilterList = [...data].filter((item) => {
-                console.log(item.categoryName, item.categoryName === keyVal, keyVal)
                 return item.categoryName === keyVal.toString()
             })
             filteredList = filteredList.concat(newFilterList)
