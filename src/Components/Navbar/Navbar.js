@@ -12,18 +12,13 @@ const Navbar = () => {
                 <img src={NavLogo} alt="logo" />
             </div>
             <div className="nav-items">
-                <Link to="/" className="nav-link sm-title hide-md" href="./">About Us</Link>
+                <Link to="/" className="nav-link sm-title hide-md">About Us</Link>
                 <a className="nav-link sm-title hide-md" href="./Products/products.html">Shop</a>
             </div>
             <div className="nav-space"></div>
             <div className="nav-icon-items">
                 <div className="nav-search-bar hide-sm">
-                    <input onChange={(e) => dispatch({
-                        type: 'SEARCH_VAL', payload: {
-                            value: e.target.value
-                        }
-                    })} className="search-bar" type="text" placeholder="Search.." />
-
+                    <input className="search-bar" type="text" placeholder="Search.." />
                     <i className="fa fa-brands fa-searchengin"></i>
                 </div>
                 <a href="Authentication/login.html">
