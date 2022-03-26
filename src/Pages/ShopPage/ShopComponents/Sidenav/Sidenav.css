@@ -1,0 +1,42 @@
+.filter-clear:hover {
+  cursor: pointer;
+}
+
+.filters-container {
+  position: fixed;
+  width: 19.2rem;
+  padding: 2.3rem 1.5rem 7.6rem 1.9rem;
+  height: 100%;
+  background-color: var(--primary-color);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.n-wt {
+  font-weight: 400;
+}
+
+.sm-sub-title {
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+}
+
+.category-check {
+  display: flex;
+  gap: 10px;
+}
+
+.category-check input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+  width: 14px;
+  height: 14px;
+}

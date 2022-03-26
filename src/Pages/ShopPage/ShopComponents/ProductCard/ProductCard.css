@@ -1,0 +1,18 @@
+.star-toggle-btn i {
+  color: var(--grey);
+}
+.star-toggle-btn i.filled {
+  color: var(--yellow-color);
+}
+.star-toggle-btn:hover {
+  background-color: transparent;
+}
+
+.btn.icon-btn.top-right {
+  top: 0;
+  right: 0;
+}
+
+.card:hover {
+  cursor: pointer;
+}

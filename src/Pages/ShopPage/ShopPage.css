@@ -1,0 +1,21 @@
+.products-layout {
+  margin-top: 4.9rem;
+  display: grid;
+  grid-template-columns: 19.2rem 1fr;
+  height: 100%;
+  width: 100%;
+}
+
+.products-section {
+  padding: 3rem 2rem 20px 2rem;
+  grid-column: 2/3;
+  display: grid;
+  column-gap: 20px;
+  row-gap: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(17.3rem, 1fr));
+}
+
+.card button.top-right {
+  top: 10px;
+  right: 10px;
+}

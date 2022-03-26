@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Navbar.css";
 import { Link } from "react-router-dom"
 import NavLogo from "../../Assets/nav-logo.png"
 
@@ -10,7 +11,7 @@ const Navbar = () => {
             </div>
             <div className="nav-items">
                 <Link to="/" className="nav-link sm-title hide-md">About Us</Link>
-                <a className="nav-link sm-title hide-md" href="./Products/products.html">Shop</a>
+                <Link to="/shop" className="nav-link sm-title hide-md">Shop</Link>
             </div>
             <div className="nav-space"></div>
             <div className="nav-icon-items">
