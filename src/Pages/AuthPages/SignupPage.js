@@ -18,16 +18,17 @@ const SignupPage = () => {
         try {
             const res = await axios.post(
                 '/api/auth/signup',
-                JSON.stringify({ ...signupData })
+                { ...signupData }
             )
             console.log(res)
-            if (res.status === 200) {
-                localStorage.setItem("userToken", res.data.encodedToken);
-                navigate("/")
+            if (res.status === 200 || res.status === 201) {
                 setUserExistError(false)
                 setSignupError(false)
+                localStorage.setItem("userToken", res.data.encodedToken);
+                navigate("/")
             }
         } catch (error) {
+            console.log(error)
             setSignupError(true)
             if (error.response.status === 422) {
                 setSignupError(false)
@@ -53,16 +54,16 @@ const SignupPage = () => {
                     <form>
                         <div className="input-flex-row mg-t-10">
                             <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, firstName: e.target.value }))}
-                                props={{ labelFor: 'firstName', labelTitle: 'First Name', placeholderText: 'Enter First Name', objKey: 'firstName', inputTypr: 'text' }} />
+                                props={{ labelFor: 'firstName', labelTitle: 'First Name', placeholderText: 'Enter First Name', objKey: 'firstName', inputTypr: 'text', inputVal: signupData.firstName }} />
 
                             <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, lastName: e.target.value }))}
-                                props={{ labelFor: 'lastName', labelTitle: 'Last Name', placeholderText: 'Enter Last Name', objKey: 'lastName', inputType: 'text' }} />
+                                props={{ labelFor: 'lastName', labelTitle: 'Last Name', placeholderText: 'Enter Last Name', objKey: 'lastName', inputType: 'text', inputVal: signupData.lastName }} />
                         </div>
                         <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, lastName: e.target.value }))}
-                            props={{ labelFor: 'email', labelTitle: 'Email', placeholderText: 'Enter email address', objKey: 'email', inputType: 'email' }} />
+                            props={{ labelFor: 'email', labelTitle: 'Email', placeholderText: 'Enter email address', objKey: 'email', inputType: 'email', inputVal: signupData.email }} />
 
                         <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, password: e.target.value }))}
-                            props={{ labelFor: 'password', labelTitle: 'Password', placeholderText: "6+ characters", objKey: 'password', inputType: 'password' }} />
+                            props={{ labelFor: 'password', labelTitle: 'Password', placeholderText: "6+ characters", objKey: 'password', inputType: 'password', inputVal: signupData.password }} />
 
                         <div className="flex-between">
                             <div className="flex-between mg-t-20">
