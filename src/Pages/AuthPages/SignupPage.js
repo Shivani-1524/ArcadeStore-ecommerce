@@ -59,7 +59,7 @@ const SignupPage = () => {
                             <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, lastName: e.target.value }))}
                                 props={{ labelFor: 'lastName', labelTitle: 'Last Name', placeholderText: 'Enter Last Name', objKey: 'lastName', inputType: 'text', inputVal: signupData.lastName }} />
                         </div>
-                        <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, lastName: e.target.value }))}
+                        <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, email: e.target.value }))}
                             props={{ labelFor: 'email', labelTitle: 'Email', placeholderText: 'Enter email address', objKey: 'email', inputType: 'email', inputVal: signupData.email }} />
 
                         <FormInput onChange={(e) => setSignupData(prev => ({ ...prev, password: e.target.value }))}
