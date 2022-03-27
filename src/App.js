@@ -1,8 +1,5 @@
 import './App.css';
-import { HomePage } from './Pages/HomePage/HomePage';
-import { ShopPage } from './Pages/ShopPage/ShopPage';
-import { CartPage } from './Pages/CartPage/CartPage';
-import { SingleProduct } from './Pages/ShopPage/SingleProductPage/SingleProduct';
+import { HomePage, LoginPage, LogoutPage, SignupPage, SingleProduct, ShopPage } from './Pages/index'
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -12,9 +9,13 @@ function App() {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/singleprod" element={<SingleProduct />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/logout" element={<LogoutPage />} />
         <Route path="/" exact element={<HomePage />} />
       </Routes>
     </div>
+
   );
 }
 export default App;

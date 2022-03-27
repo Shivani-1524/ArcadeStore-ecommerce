@@ -75,4 +75,4 @@ const SingleProduct = (props) => {
     )
 }
 
-export { SingleProduct }
+export default SingleProduct 
