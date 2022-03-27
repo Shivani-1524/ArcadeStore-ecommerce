@@ -2,7 +2,7 @@ import React from 'react';
 import "./Navbar.css";
 import { Link } from "react-router-dom"
 import NavLogo from "../../Assets/nav-logo.png"
-import './navbar.css'
+import './Navbar.css'
 
 const Navbar = () => {
     const isLoggedIn = localStorage.getItem('userToken')

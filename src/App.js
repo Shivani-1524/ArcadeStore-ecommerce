@@ -1,5 +1,5 @@
 import './App.css';
-import { HomePage, LoginPage, LogoutPage, SignupPage } from './Pages/index'
+import { HomePage, LoginPage, LogoutPage, SignupPage, SingleProduct, ShopPage } from './Pages/index'
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
