@@ -21,13 +21,11 @@ const LoginPage = () => {
                 setLoginError(false)
                 setUserNotFoundError(false)
                 navigate('/')
-            } else if (res.status === 201) {
-                throw new Error('404')
             }
             localStorage.setItem("userToken", res.data.encodedToken);
         } catch (err) {
             setLoginError(true)
-            if (err.response.status === 404 || err.message === '404') {
+            if (err.response.status === 404) {
                 setLoginError(false)
                 setUserNotFoundError(true)
                 return;
