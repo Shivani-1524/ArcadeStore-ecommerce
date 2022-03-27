@@ -12,7 +12,7 @@ const ProductCard = (props) => {
 
         <div className={inStock ? "card ver-card no-bg-color" : "card ver-card no-bg-color overlay"} >
             <div className="img-container pos-rel">
-                <Link to="/singleprod">
+                <Link to="/singleprod" state={{ id: _id }}>
                     <img className="img-resp" src={imgSrc} alt={altTxt} />
                 </Link>
                 <div className="rating-row bdg pos-abs bottom-left">
@@ -41,8 +41,8 @@ const ProductCard = (props) => {
                 </Link>
             </div>
 
-            {!inStock && <div class="overlay-layer">
-                <p class="md-title">OUT OF STOCK</p>
+            {!inStock && <div className="overlay-layer">
+                <p className="md-title">OUT OF STOCK</p>
             </div>}
         </div>
 

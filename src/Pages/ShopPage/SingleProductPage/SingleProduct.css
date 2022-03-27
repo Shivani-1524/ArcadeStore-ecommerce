@@ -1,0 +1,26 @@
+.singleproduct-grid {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.img-sprod {
+  height: 38.5rem;
+}
+.rating-row.white-rating {
+  background-color: var(--white);
+  border: 1px solid var(--light-grey);
+}
+.prod-data {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-section {
+  margin-top: 0;
+}

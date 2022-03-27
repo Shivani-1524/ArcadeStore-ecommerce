@@ -1,7 +1,7 @@
 import './App.css';
 import { HomePage } from './Pages/HomePage/HomePage';
 import { ShopPage } from './Pages/ShopPage/ShopPage';
-import { SingleProduct } from './Pages/ShopPage/SingleProduct';
+import { SingleProduct } from './Pages/ShopPage/SingleProductPage/SingleProduct';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {

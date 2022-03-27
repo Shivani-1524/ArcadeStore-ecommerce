@@ -16,7 +16,7 @@ import KleeEarphones from "../../Assets/Products/klee-miearphone.jfif"
 
 export const products = [
   {
-    _id: uuid(),
+    _id: 101,
     title: "Zhongli Traveller Poster",
     game: "showGenshin",
     categoryName: "showCollectibles",
@@ -31,7 +31,7 @@ export const products = [
     altTxt: 'zhongli poster'
   },
   {
-    _id: uuid(),
+    _id: 102,
     title: "Soesic Black Hoodie",
     game: "showApex",
     categoryName: "showClothing",
@@ -46,7 +46,7 @@ export const products = [
     altTxt: 'apex legends hoodie'
   },
   {
-    _id: uuid(),
+    _id: 103,
     title: "Klee Redmi Earphones",
     game: "showGenshin",
     categoryName: "showGadgets",
@@ -59,7 +59,7 @@ export const products = [
     altTxt: 'klee redmi earphones'
   },
   {
-    _id: uuid(),
+    _id: 104,
     title: "Itto Poster",
     game: "showGenshin",
     categoryName: "showCollectibles",
@@ -74,7 +74,7 @@ export const products = [
     altTxt: 'itto poster'
   },
   {
-    _id: uuid(),
+    _id: 105,
     title: "Genshin Razer Mouse",
     game: "showGenshin",
     categoryName: "showGadgets",
@@ -87,7 +87,7 @@ export const products = [
     altTxt: 'genshin razer mouse'
   },
   {
-    _id: uuid(),
+    _id: 106,
     title: "Jett Raze Omen Poster",
     game: "showValorant",
     categoryName: "showCollectibles",
@@ -102,7 +102,7 @@ export const products = [
     altTxt: 'Jett Raze Omen Poster'
   },
   {
-    _id: uuid(),
+    _id: 107,
     title: "Call Of Duty Disc",
     game: "showCod",
     categoryName: "showGameCDs",
@@ -117,7 +117,7 @@ export const products = [
     altTxt: 'call of duty game disc'
   },
   {
-    _id: uuid(),
+    _id: 108,
     title: "Apex Legends Black Hoodie",
     game: "showApex",
     categoryName: "showClothing",
