@@ -1,7 +1,7 @@
 import React from 'react'
 
 const CartProduct = (props) => {
-    { title, subtitle, prodDescription, price, }
+    // { title, subtitle, prodDescription, price, }
     return (
         <div class="card hor-card mg-t-30">
             <i class="close-icon fas fa-times-circle"></i>

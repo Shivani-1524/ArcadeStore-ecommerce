@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from "react-router-dom";
-import '../../../Components/Navbar/Navbar'
+import Navbar from '../../../Components/Navbar/Navbar'
 import './SingleProduct.css'
 const axios = require('axios');
 
@@ -13,7 +13,7 @@ const SingleProduct = (props) => {
         const prodId = location.state.id;
         (async () => {
             try {
-                const res = await axios.get(`/api/products/:${prodId}`)
+                const res = await axios.get(`/api/products/${prodId}`)
                 console.log(res)
             } catch (err) {
                 console.log(err)
