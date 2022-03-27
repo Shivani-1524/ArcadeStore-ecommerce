@@ -9,74 +9,69 @@ const SingleProduct = (props) => {
     const [productData, setProductData] = useState(false);
     const location = useLocation()
 
+
     useEffect(() => {
         const prodId = location.state.id;
         (async () => {
             try {
                 const res = await axios.get(`/api/products/${prodId}`)
-                console.log(res)
+                setProductData(res.data.product)
             } catch (err) {
                 console.log(err)
             }
-
         })()
-
     }, [])
+
     return (
+
         <div>
             <Navbar />
-            <div className="singleproduct-grid">
-                <div className="img-sprod">
-                    <img src="../Assets/Products/chongung-poster.jfif" alt="product image" />
-                </div>
-                <div className="prod-data">
-                    <h1 className="rg-title">Lorem Ipsum</h1>
-                    <p className="rg-p grey-txt">Caption content for image of product</p>
-                    <div className="rating-row bdg white-rating">
-                        <i className="badge-star fas fa-star"></i>
-                        <p className="xsm-title">4.3</p>
-                        <i className="badge-circle fas fa-circle"></i>
-                        <p className="review-num xsm-p grey-txt">73 Ratings</p>
-                    </div>
-                    <div className="mg-t-5 price-row">
-                        <p className="md-title">Rs. 200</p>
-                        <p className="sm-p grey-txt striked-txt">Rs. 400</p>
-                        <p className="sm-p orange-txt">50% OFF</p>
-                    </div>
-                    <p className="green-txt bold">Inclusive of all taxes</p>
+            {productData &&
+                <div className="singleproduct-grid">
                     <div>
-                        <p className="sm-p">Get it by Fri, Mar 04 - 600116</p>
-                        <p className="sm-p">Seller: <span className="bold">KESHVI FASHION LLP</span></p>
+                        <img className="img-sprod img-resp" src={productData.imgSrc} alt={productData.altTxt} />
                     </div>
-                    <div className="btn-section">
+                    <div className="prod-data">
+                        <h1 className="rg-title">{productData.title}</h1>
+                        <p className="rg-p grey-txt">{productData.subtitle}</p>
+                        <div className="rating-row bdg white-rating">
+                            <i className="badge-star fas fa-star"></i>
+                            <p className="xsm-title">{productData.rating}</p>
+                            <i className="badge-circle fas fa-circle"></i>
+                            <p className="review-num xsm-p grey-txt">{productData.reviewsnum} Ratings</p>
+                        </div>
+                        <div className="mg-t-5 price-row">
+                            <p className="md-title">Rs. {productData.currentprice}</p>
+                            <p className="sm-p grey-txt striked-txt">Rs. {productData.originalprice}</p>
+                            <p className="sm-p orange-txt">{productData.discount}% OFF</p>
+                        </div>
+                        <p className="green-txt bold">Inclusive of all taxes</p>
+                        {!productData.inStock && <p className="green-txt bold">Product Out Of Stock</p>}
+                        <div>
+                            <p className="sm-p">Get it by Fri, Mar 04 - 600116</p>
+                            {productData.inStock && <p className="sm-p">Get it by Fri, Mar 04 - 600116</p>}
+                            <p className="sm-p">Seller: <span className="bold">{productData.seller.toUpperCase()}</span></p>
+                        </div>
+                        <div className="btn-section">
 
-                        <button className="btn warning-outlined-btn icon-left mg-t-10">
-                            <i className="far fa-heart"></i>
-                            Add to WishList
-                        </button>
-                        <button className="btn primary-btn solid icon-left mg-t-10">
-                            <i className="fas fa-shopping-cart"></i>
-                            Add to Bag
-                        </button>
+                            <button className="btn warning-outlined-btn icon-left mg-t-10">
+                                <i className="far fa-heart"></i>
+                                Add to WishList
+                            </button>
+                            <button className="btn primary-btn solid icon-left mg-t-10">
+                                <i className="fas fa-shopping-cart"></i>
+                                Add to Bag
+                            </button>
+                        </div>
+                        <p className="sm-title mg-t-20">PRODUCT DESCRIPTION</p>
+                        <p className="rg-p">{productData.description}</p>
+                        <p className="sm-title mg-t-20">PRODUCT SPECS</p>
+                        <p className="rg-p">{productData.specs}</p>
                     </div>
-                    <p className="sm-title mg-t-20">PRODUCT DETAILS</p>
-                    <p className="rg-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est corporis ad perferendis
-                        alias
-                        assumenda
-                        error, modi, animi distinctio ea natus nostrum! Optio enim velit earum molestias beatae nihil,
-                        ducimus
-                        autem!
-                        assumenda
-                        error, modi, animi distinctio ea natus nostrum! Optio enim velit earum molestias beatae nihil,
-                        ducimus
-                        autem!
-                        assumenda
-                        error, modi, animi distinctio ea natus nostrum! Optio enim velit earum molestias beatae nihil,
-                        ducimus
-                        autem!</p>
                 </div>
-            </div>
+            }
         </div>
+
     )
 }
 

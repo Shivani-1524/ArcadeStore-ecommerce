@@ -2,11 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from "react-router-dom"
 import './ProductCard.css';
+import { addToCart } from '../../../../Util/CartUtilities';
 
 const ProductCard = (props) => {
     const [toggleLike, setToggleLike] = useState(false);
 
-    const { _id, title, originalprice, currentprice, discount, reviews, rating, imgSrc, inStock, isFav, altTxt } = props.productdetails;
+    const { _id, title, originalprice, currentprice, discount, reviewsnum, rating, imgSrc, inStock, isFav, altTxt } = props.productdetails;
 
     return (
 
@@ -19,7 +20,7 @@ const ProductCard = (props) => {
                     <i className="badge-star fas fa-star"></i>
                     <p className="xsm-title">{rating}</p>
                     <i className="badge-circle fas fa-circle"></i>
-                    <p className="review-num xsm-p grey-txt">({reviews})</p>
+                    <p className="review-num xsm-p grey-txt">({reviewsnum})</p>
                 </div>
                 <button onClick={() => setToggleLike(prev => !prev)} className="btn icon-btn pos-abs top-right star-toggle-btn">
                     {toggleLike || isFav ? <i className="fas fa-star filled"></i> : <i className="fas fa-star"></i>}
@@ -33,12 +34,10 @@ const ProductCard = (props) => {
                     {discount && <p className="sm-p grey-txt striked-txt">Rs. {originalprice}</p>}
                     {discount && <p className="sm-p orange-txt">{discount}% OFF</p>}
                 </div>
-                <Link to='/shop'>
-                    <button className="btn primary-btn solid icon-left mg-t-10">
-                        <i className="fas fa-shopping-cart"></i>
-                        Add to Bag
-                    </button>
-                </Link>
+                <button onClick={() => addToCart(props.productdetails)} className="btn primary-btn solid icon-left mg-t-10">
+                    <i className="fas fa-shopping-cart"></i>
+                    Add to Bag
+                </button>
             </div>
 
             {!inStock && <div className="overlay-layer">

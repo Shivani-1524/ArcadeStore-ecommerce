@@ -1,16 +1,20 @@
 .singleproduct-grid {
+  margin: auto;
+  margin-top: 90px;
   width: 90%;
   height: 100%;
-  margin: auto;
   display: grid;
   grid-template-columns: 40% 1fr;
   justify-items: center;
   align-items: center;
+  overflow: scroll;
 }
 
-.img-sprod {
-  height: 38.5rem;
+img.img-sprod {
+  height: 40rem;
+  width: 30rem;
 }
+
 .rating-row.white-rating {
   background-color: var(--white);
   border: 1px solid var(--light-grey);
