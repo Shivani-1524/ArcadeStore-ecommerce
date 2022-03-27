@@ -1,9 +1,8 @@
 import React from 'react'
 import './AuthPage.css'
-import Navbar from '../../Components/Navbar/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import FormInput from './AuthComponents/FormInput'
+import { FormInput, Navbar } from './index.js'
 const axios = require('axios');
 
 const LoginPage = () => {
@@ -16,7 +15,6 @@ const LoginPage = () => {
         e.preventDefault()
         try {
             const res = await axios.post('/api/auth/login', { ...loginData })
-            console.log(res)
             if (res.status === 200) {
                 setLoginError(false)
                 setUserNotFoundError(false)
@@ -43,15 +41,6 @@ const LoginPage = () => {
                             props={{ labelFor: 'email', labelTitle: 'Email', placeholderText: "Enter test@email.com", objKey: 'email', inputType: 'email' }} />
                         <FormInput onChange={(e) => setLoginData(prev => ({ ...prev, password: e.target.value }))}
                             props={{ labelFor: 'password', labelTitle: 'Password', placeholderText: "Enter test", objKey: 'password', inputType: 'password' }} />
-
-                        {/* <div className="mg-t-20">
-                            <label className="input-label sm-title" htmlFor="name">Email</label>
-                            <input className="user-input" required onChange={(e) => setLoginData(prev => ({ ...prev, email: e.target.value }))} id="name" type="email" />
-                        </div> */}
-                        {/* <div className="mg-t-10">
-                            <label className="input-label sm-title" htmlFor="password">Password</label>
-                            <input className="user-input" required onChange={(e) => setLoginData(prev => ({ ...prev, password: e.target.value }))} id="password" type="password" placeholder="Enter test" />
-                        </div> */}
                         <div className="flex-between mg-t-20">
                             <div className="check-container">
                                 <input type="checkbox" id="rememberme" htmlFor="rememberme" />
