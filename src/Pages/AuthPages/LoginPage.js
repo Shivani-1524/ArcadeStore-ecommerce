@@ -2,7 +2,7 @@ import React from 'react'
 import './AuthPage.css'
 import Navbar from '../../Components/Navbar/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react/cjs/react.development'
+import { useState } from 'react'
 import FormInput from './AuthComponents/FormInput'
 const axios = require('axios');
 
