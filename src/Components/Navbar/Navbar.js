@@ -2,8 +2,13 @@ import React from 'react';
 import "./Navbar.css";
 import { Link } from "react-router-dom"
 import NavLogo from "../../Assets/nav-logo.png"
+import './navbar.css'
 
 const Navbar = () => {
+    const isLoggedIn = localStorage.getItem('userToken')
+    const handleUserLogout = () => {
+        localStorage.removeItem('userToken');
+    }
     return (
         <nav className="navbar">
             <div className="nav-logo">
@@ -19,11 +24,17 @@ const Navbar = () => {
                     <input className="search-bar" type="text" placeholder="Search.." />
                     <i className="fa fa-brands fa-searchengin"></i>
                 </div>
-                <a href="Authentication/login.html">
+                {isLoggedIn === null ? <Link to='/login'>
                     <button id="dark-bg-icon" className="btn icon-btn hide-md">
                         <i className="fa fa-solid fa-user"></i>
                     </button>
-                </a>
+                </Link> :
+                    <Link to='/logout'>
+                        <button onClick={handleUserLogout} id="dark-bg-icon" className="btn icon-btn hide-md">
+                            <i className="fa fas fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+                        </button>
+                    </Link>
+                }
                 <a href="Wishlist/wishlist.html">
                     <button id="dark-bg-icon" className="btn icon-btn hide-md">
                         <i className="fa fa-solid fa-heart"></i>
