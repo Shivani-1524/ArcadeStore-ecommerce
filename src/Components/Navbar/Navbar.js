@@ -35,16 +35,16 @@ const Navbar = () => {
                         </button>
                     </Link>
                 }
-                <a href="Wishlist/wishlist.html">
+                <Link to='/wishlist'>
                     <button id="dark-bg-icon" className="btn icon-btn hide-md">
                         <i className="fa fa-solid fa-heart"></i>
                     </button>
-                </a>
-                <a href="Cart/cart-page.html">
+                </Link>
+                <Link to='/cart'>
                     <button id="dark-bg-icon" className="btn icon-btn hide-md">
                         <i className="fas fa-shopping-cart"></i>
                     </button>
-                </a>
+                </Link>
                 <button id="dark-bg-icon" className="btn icon-btn show-md">
                     <i className="fas fa-solid fa-bars"></i>
                 </button>

@@ -3,6 +3,7 @@ import LoginPage from './AuthPages/LoginPage';
 import LogoutPage from './AuthPages/LogoutPage';
 import SignupPage from './AuthPages/SignupPage';
 import ShopPage from './ShopPage/ShopPage';
+import CartPage from './CartPage/CartPage';
 import SingleProduct from './ShopPage/SingleProductPage/SingleProduct';
 
-export { HomePage, LoginPage, LogoutPage, SignupPage, ShopPage, SingleProduct }
+export { HomePage, LoginPage, LogoutPage, SignupPage, ShopPage, SingleProduct, CartPage }
