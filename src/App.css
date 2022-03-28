@@ -104,6 +104,14 @@ a {
   cursor: pointer;
 }
 
+.empty-page-txt {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
 .forgot-pswd:hover {
   cursor: pointer;
 }

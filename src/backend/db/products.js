@@ -14,6 +14,9 @@ import KleeEarphones from "../../Assets/Products/klee-miearphone.jfif"
  * You can add products of your wish with different attributes
  * */
 
+
+// REMOVE ISFAVS
+
 export const products = [
   {
     _id: uuid(),
@@ -31,6 +34,7 @@ export const products = [
 
     seller: "keshviLLD pvt",
     subtitle: "Genshin from MiHoYo",
+    shortdesc: "Genshin Poster featuring Zhongli, traveller and Xiao.",
     description: "This is an aesthetic poster that has a waxy shine coating on top to give you that added lusture and brightness. It makes your wall seem so full of personality and makes your room a fun lot more fun to chill in. your gaming room deserves to be filled with beautiful moments from one of your favourite games",
     specs: " 24'' x 36'' inches",
     reviewsnum: 23,
@@ -49,6 +53,7 @@ export const products = [
     isFav: false,
     altTxt: 'apex legends hoodie',
 
+    shortdesc: "All black hoodie with the signature soseic logo. Perfect for game night.",
     seller: "keshviLLD pvt",
     subtitle: "Genshin from MiHoYo",
     description: "This is an aesthetic poster that has a waxy shine coating on top to give you that added lusture and brightness. It makes your wall seem so full of personality and makes your room a fun lot more fun to chill in. your gaming room deserves to be filled with beautiful moments from one of your favourite games",
@@ -67,6 +72,7 @@ export const products = [
     isFav: false,
     altTxt: 'klee redmi earphones',
 
+    shortdesc: "wireless bluetooth earphones sound great. try combining that with klees cute backpack, sounds too good to be true",
     seller: "keshviLLD pvt",
     subtitle: "Genshin from MiHoYo",
     description: "This is an aesthetic poster that has a waxy shine coating on top to give you that added lusture and brightness. It makes your wall seem so full of personality and makes your room a fun lot more fun to chill in. your gaming room deserves to be filled with beautiful moments from one of your favourite games",
@@ -87,6 +93,7 @@ export const products = [
     isFav: false,
     altTxt: 'itto poster',
 
+    shortdesc: "who cares if you pulled itto or not when you could still look at him all day long ;)",
     seller: "keshviLLD pvt",
     subtitle: "Genshin from MiHoYo",
     description: "This is an aesthetic poster that has a waxy shine coating on top to give you that added lusture and brightness. It makes your wall seem so full of personality and makes your room a fun lot more fun to chill in. your gaming room deserves to be filled with beautiful moments from one of your favourite games",

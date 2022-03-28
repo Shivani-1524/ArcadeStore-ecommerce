@@ -3,6 +3,7 @@ import './AuthPage.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { FormInput, Navbar } from './index.js'
+import { useAuth } from '../../Contexts/UserProvider'
 const axios = require('axios');
 
 const SignupPage = () => {
@@ -12,6 +13,7 @@ const SignupPage = () => {
     const [signupData, setSignupData] = useState({
         firstName: '', lastName: '', email: '', password: '',
     });
+    const { setIsLoggedIn } = useAuth()
     const handleUserSignup = async (e) => {
         e.preventDefault()
         try {
@@ -19,13 +21,15 @@ const SignupPage = () => {
                 '/api/auth/signup',
                 { ...signupData }
             )
-            if (res.status === 200 || res.status === 201) {
+            if (res.status === 200) {
+                setIsLoggedIn(true)
+                localStorage.setItem("userToken", res.data.encodedToken);
                 setUserExistError(false)
                 setSignupError(false)
-                localStorage.setItem("userToken", res.data.encodedToken);
                 navigate("/")
             }
         } catch (error) {
+            setIsLoggedIn(false)
             setSignupError(true)
             if (error.response.status === 422) {
                 setSignupError(false)
@@ -65,8 +69,8 @@ const SignupPage = () => {
                         <div className="flex-between">
                             <div className="flex-between mg-t-20">
                                 <div className="check-container">
-                                    <input type="checkbox" id="rememberme" htmlFor="rememberme" />
-                                    <label htmlFor="rememberme">Remember me</label>
+                                    <input type="checkbox" id="tnc-chk" htmlFor="tnc-chk" />
+                                    <label htmlFor="tnc-chk">Accept all the T&C</label>
                                 </div>
                             </div>
                             <Link to='/login'>

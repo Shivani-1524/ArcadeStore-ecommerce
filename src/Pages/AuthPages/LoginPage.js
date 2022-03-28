@@ -3,6 +3,7 @@ import './AuthPage.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { FormInput, Navbar } from './index.js'
+import { useAuth } from '../../Contexts/UserProvider'
 const axios = require('axios');
 
 const LoginPage = () => {
@@ -10,18 +11,21 @@ const LoginPage = () => {
     const [loginData, setLoginData] = useState({ email: '', password: '' })
     const [loginError, setLoginError] = useState(false);
     const [userNotFoundError, setUserNotFoundError] = useState(false);
+    const { setIsLoggedIn } = useAuth()
 
     const handleUserLogin = async (e) => {
         e.preventDefault()
         try {
             const res = await axios.post('/api/auth/login', { ...loginData })
             if (res.status === 200) {
+                setIsLoggedIn(true)
                 setLoginError(false)
                 setUserNotFoundError(false)
                 navigate('/')
             }
             localStorage.setItem("userToken", res.data.encodedToken);
         } catch (err) {
+            setIsLoggedIn(false)
             setLoginError(true)
             if (err.response.status === 404) {
                 setLoginError(false)

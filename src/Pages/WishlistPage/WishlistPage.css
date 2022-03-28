@@ -1,0 +1,17 @@
+.wishlist-section {
+  padding: 3rem;
+  display: grid;
+  column-gap: 20px;
+  row-gap: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(17.7rem, 1fr));
+}
+
+.wishlist-container {
+  margin-top: 7.7rem;
+  width: 100%;
+  height: 100%;
+}
+
+.grey {
+  color: var(--grey);
+}

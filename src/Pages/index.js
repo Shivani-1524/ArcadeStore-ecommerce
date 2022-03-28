@@ -4,6 +4,7 @@ import LogoutPage from './AuthPages/LogoutPage';
 import SignupPage from './AuthPages/SignupPage';
 import ShopPage from './ShopPage/ShopPage';
 import CartPage from './CartPage/CartPage';
+import WishlistPage from './WishlistPage/WishlistPage';
 import SingleProduct from './ShopPage/SingleProductPage/SingleProduct';
 
-export { HomePage, LoginPage, LogoutPage, SignupPage, ShopPage, SingleProduct, CartPage }
+export { HomePage, LoginPage, LogoutPage, SignupPage, ShopPage, SingleProduct, CartPage, WishlistPage }
