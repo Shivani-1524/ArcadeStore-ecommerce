@@ -1,25 +1,51 @@
 import React from 'react'
 import '../WishlistPage.css'
-import KleeEarphones from "../../../Assets/Products/klee-miearphone.jfif"
 import { Link } from 'react-router-dom'
+import { removeFromWishlist } from '../../../Util/WishlistUtilities'
+import { useWishlist } from '../../../Contexts/WishlistProvider'
+import { useCart } from '../../../Contexts/CartProvider'
+import { findCartProduct, addToCart } from '../../../Util/CartUtilities'
+
 const WishlistCard = ({ wishProduct }) => {
-    console.log(wishProduct);
+    const { imgSrc, title, currentprice, discount, originalprice, altTxt } = wishProduct
+    const { wishlistDispatch } = useWishlist()
+    const { cartDispatch, cartState } = useCart()
+
+    const deleteFromWishlist = async (wishlistProduct) => {
+        const newWishlist = await removeFromWishlist(wishlistProduct)
+        wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: newWishlist })
+    }
+
+    const moveFromWishlist = async (wishlistProduct) => {
+        const newCartList = []
+        const newWishlist = await removeFromWishlist(wishlistProduct)
+        wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: newWishlist })
+        const foundId = findCartProduct(wishlistProduct._id, cartState)
+        if (!foundId) {
+            newCartList = await addToCart(wishlistProduct)
+        } else {
+            console.log("product already in cart. update qty in cart page.")
+            newCartList = await cartState
+        }
+        cartDispatch({ type: 'UPDATE_CART', payload: newCartList })
+    }
+
     return (
         <div className="card ver-card no-bg-color">
-            <i className="close-icon grey fas fa-times-circle"></i>
+            <i className="close-icon grey fas fa-times-circle" onClick={() => deleteFromWishlist(wishProduct)}></i>
             <Link to="/singleprod" state={{ id: wishProduct._id }}>
                 <div className="img-container">
-                    <img className="img-resp" src={KleeEarphones} alt="card image" />
+                    <img className="img-resp" src={imgSrc} alt={altTxt} />
                 </div>
             </Link>
             <div className="text-card">
-                <p className="sm-title bold">PlayStation5 Controller</p>
+                <p className="sm-title bold">{title}</p>
                 <div className="mg-t-5 price-row">
-                    <p className="sm-title grey-txt">Rs. 200</p>
-                    <p className="sm-p grey-txt striked-txt">Rs. 400</p>
-                    <p className="sm-p orange-txt">50% OFF</p>
+                    <p className="sm-title grey-txt">Rs. {currentprice}</p>
+                    <p className="sm-p grey-txt striked-txt">Rs. {originalprice}</p>
+                    <p className="sm-p orange-txt">{discount}% OFF</p>
                 </div>
-                <button className="btn primary-btn solid icon-left mg-t-10">
+                <button onClick={() => moveFromWishlist(wishProduct)} className="btn primary-btn solid icon-left mg-t-10">
                     <i className="fas fa-shopping-cart"></i>
                     Move to Bag
                 </button>

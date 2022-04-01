@@ -22,7 +22,8 @@ const ProductCard = (props) => {
         if (!foundId) {
             return await addToCart(productDetails)
         } else {
-            return await addProductQty(productDetails)
+            console.log("product already in cart. update qty in cart page.")
+            return await cartState
         }
     }
 

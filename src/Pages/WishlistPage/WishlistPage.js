@@ -42,9 +42,7 @@ const WishlistPage = () => {
             </div> : <div className="empty-page-txt">
                 <p className='rg-p'>Nothing to see here, such empty 👾</p>
             </div>}
-
         </div>
-
     )
 }
 

@@ -1,14 +1,30 @@
 import React from 'react';
-import { addProductQty, reduceProductQty, removeFromCart } from '../../../Util/CartUtilities';
+import { addProductQty, reduceProductQty, removeFromCart, findCartProduct } from '../../../Util/CartUtilities';
+import { addToWishlist } from '../../../Util/WishlistUtilities';
 import { useCart } from '../../../Contexts/CartProvider'
+import { useWishlist } from '../../../Contexts/WishlistProvider'
 
 const CartProduct = ({ cartItem }) => {
     const { title, imgSrc, altTxt, subtitle, qty, reviewsnum, currentprice, discount, originalprice, rating, shortdesc } = cartItem
     const { cartDispatch } = useCart()
-
+    const { wishlistState, wishlistDispatch } = useWishlist()
     const updateCartList = async (product, getUpdatedCart) => {
         const updatedCart = await getUpdatedCart(product)
         cartDispatch({ type: 'UPDATE_CART', payload: updatedCart })
+    }
+    const moveFromCart = async (cartProduct) => {
+        const newWishlist = []
+        const updatedCart = await removeFromCart(cartProduct)
+        cartDispatch({ type: 'UPDATE_CART', payload: updatedCart })
+        const foundId = findCartProduct(cartProduct._id, wishlistState)
+        if (!foundId) {
+            newWishlist = await addToWishlist(cartProduct)
+        } else {
+            console.log("product already in cart. update qty in cart page.")
+            newWishlist = await wishlistState
+        }
+        wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: newWishlist })
+
     }
 
     return (
@@ -35,7 +51,7 @@ const CartProduct = ({ cartItem }) => {
                     <p className="sm-p orange-txt">{discount}% OFF</p>
                 </div>
                 <div className="card-btn-row mg-t-15">
-                    <button className="btn warning-btn solid sm-btn">Move to Wishlist</button>
+                    <button onClick={() => moveFromCart(cartItem)} className="btn warning-btn solid sm-btn">Move to Wishlist</button>
                     <div className="flex-row sm qty-row">
                         <p className="xsm-p">Quantity:</p>
                         <button onClick={() => updateCartList(cartItem, reduceProductQty)}><i className="fa fa-solid fa-minus"></i></button>

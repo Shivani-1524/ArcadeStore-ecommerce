@@ -8,8 +8,10 @@ const axios = require('axios');
 import { useCart } from '../../Contexts/CartProvider'
 
 
+
 const CartPage = () => {
     const { cartState, cartDispatch } = useCart()
+
     const navigate = useNavigate()
     const encodedToken = localStorage.getItem('userToken')
     useEffect(() => {
