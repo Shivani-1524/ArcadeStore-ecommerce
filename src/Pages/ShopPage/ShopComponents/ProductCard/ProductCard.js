@@ -12,8 +12,7 @@ const ProductCard = (props) => {
     const { isLoggedIn } = useAuth()
     const { _id, title, originalprice, currentprice, discount, reviewsnum, rating, imgSrc, inStock, altTxt } = props.productdetails;
     const isFav = props.inWishlist
-    const [toggleLike, setToggleLike] = useState(isFav);
-
+    const [toggleLike, setToggleLike] = useState(false);
 
 
     return (
@@ -38,7 +37,7 @@ const ProductCard = (props) => {
                         navigate('/login')
                     }
                 }} className="btn icon-btn pos-abs top-right star-toggle-btn">
-                    {toggleLike || isFav ? <i className="fas fa-star filled"></i> : <i className="fas fa-star"></i>}
+                    {(toggleLike || isFav) && isLoggedIn ? <i className="fas fa-star filled"></i> : <i className="fas fa-star"></i>}
                 </button>
             </div>
 

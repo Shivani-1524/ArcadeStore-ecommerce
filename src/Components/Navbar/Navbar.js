@@ -1,16 +1,15 @@
 import React from 'react';
 import "./Navbar.css";
 import { Link } from "react-router-dom"
-import { useEffect, useState } from 'react'
 import NavLogo from "../../Assets/nav-logo.png"
+import { useAuth } from '../../Contexts/UserProvider';
 import './Navbar.css'
 
 const Navbar = () => {
-    let isLoggedIn = localStorage.getItem('userToken')
-    const [logToken, setLogToken] = useState(isLoggedIn)
+    const { isLoggedIn, setIsLoggedIn } = useAuth()
     const handleUserLogout = () => {
-        setLogToken(null)
         localStorage.removeItem('userToken');
+        setIsLoggedIn(false)
     }
     return (
         <nav className="navbar">
@@ -27,7 +26,7 @@ const Navbar = () => {
                     <input className="search-bar" type="text" placeholder="Search.." />
                     <i className="fa fa-brands fa-searchengin"></i>
                 </div>
-                {logToken === null ? <Link to='/login'>
+                {!isLoggedIn ? <Link to='/login'>
                     <button id="dark-bg-icon" className="btn icon-btn hide-md">
                         <i className="fa fa-solid fa-user"></i>
                     </button>
