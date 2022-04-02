@@ -16,16 +16,6 @@ const addToCart = async (cartProduct) => {
     return res.data.cart
 }
 
-const findCartProduct = (productId, cartList) => {
-    // const foundId = cartList.findIndex(item => {
-    //     console.log(item._id, "FIRST")
-    //     console.log(productId, "SECOND")
-    //     return item._id == productId
-    // })
-    const foundId = cartList.some(cartItem => cartItem._id === productId)
-    return (foundId)
-
-}
 
 const removeFromCart = async (cartProduct) => {
     const res = await axios({
@@ -70,4 +60,4 @@ const reduceProductQty = async (cartProduct) => {
     return res.data.cart
 }
 
-export { addToCart, findCartProduct, addProductQty, reduceProductQty, removeFromCart }
+export { addToCart, addProductQty, reduceProductQty, removeFromCart }

@@ -1,10 +1,8 @@
 import React from 'react'
 import '../WishlistPage.css'
 import { Link } from 'react-router-dom'
-import { removeFromWishlist } from '../../../Util/WishlistUtilities'
-import { useWishlist } from '../../../Contexts/WishlistProvider'
-import { useCart } from '../../../Contexts/CartProvider'
-import { findCartProduct, addToCart } from '../../../Util/CartUtilities'
+import { removeFromWishlist, addToCart, findProductInList } from '../../../Util/index'
+import { useCart, useWishlist } from '../../../Contexts/index'
 
 const WishlistCard = ({ wishProduct }) => {
     const { imgSrc, title, currentprice, discount, originalprice, altTxt } = wishProduct
@@ -20,7 +18,7 @@ const WishlistCard = ({ wishProduct }) => {
         const newCartList = []
         const newWishlist = await removeFromWishlist(wishlistProduct)
         wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: newWishlist })
-        const foundId = findCartProduct(wishlistProduct._id, cartState)
+        const foundId = findProductInList(wishlistProduct._id, cartState)
         if (!foundId) {
             newCartList = await addToCart(wishlistProduct)
         } else {

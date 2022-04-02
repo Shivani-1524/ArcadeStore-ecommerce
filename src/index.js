@@ -2,12 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { FilterProvider } from './Contexts/FilterProvider'
-import { CartProvider } from './Contexts/CartProvider'
-import { UserProvider } from './Contexts/UserProvider'
-import { WishlistProvider } from './Contexts/WishlistProvider'
 import { makeServer } from "./server";
 import { BrowserRouter } from 'react-router-dom'
+import { FilterProvider, WishlistProvider, UserProvider, CartProvider } from './Contexts/index'
+
 
 // Call make Server
 makeServer();

@@ -2,33 +2,23 @@ import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom"
 import './ProductCard.css';
-import { addToCart, findCartProduct, addProductQty } from '../../../../Util/CartUtilities';
-import { addToWishlist, removeFromWishlist } from '../../../../Util/WishlistUtilities';
-import { useCart } from '../../../../Contexts/CartProvider'
-import { useAuth } from '../../../../Contexts/UserProvider'
-import { useWishlist } from '../../../../Contexts/WishlistProvider'
+import { addToCart, handleAddToList, addToWishlist, removeFromWishlist } from '../../../../Util/index';
+import { useAuth, useWishlist, useCart } from '../../../../Contexts/index'
 
 const ProductCard = (props) => {
     const { cartDispatch, cartState } = useCart()
-    const { wishlistDispatch, wishlistState } = useWishlist()
+    const { wishlistDispatch } = useWishlist()
     const navigate = useNavigate()
     const { isLoggedIn } = useAuth()
     const { _id, title, originalprice, currentprice, discount, reviewsnum, rating, imgSrc, inStock, altTxt } = props.productdetails;
     const isFav = props.inWishlist
     const [toggleLike, setToggleLike] = useState(isFav);
 
-    const handleAddCartClick = async (productDetails, cartState) => {
-        const foundId = findCartProduct(productDetails._id, cartState)
-        if (!foundId) {
-            return await addToCart(productDetails)
-        } else {
-            console.log("product already in cart. update qty in cart page.")
-            return await cartState
-        }
-    }
+
 
     return (
         <div className={inStock ? "card ver-card no-bg-color" : "card ver-card no-bg-color overlay"} >
+
             <div className="img-container pos-rel">
                 <Link to="/singleprod" state={{ id: _id }}>
                     <img className="img-resp" src={imgSrc} alt={altTxt} />
@@ -52,6 +42,7 @@ const ProductCard = (props) => {
                 </button>
             </div>
 
+
             <div className="text-card">
                 <p className="sm-title bold">{title}</p>
                 <div className="mg-t-5 price-row">
@@ -62,7 +53,8 @@ const ProductCard = (props) => {
                 <button
                     onClick={async () => {
                         if (isLoggedIn) {
-                            const cartList = await handleAddCartClick(props.productdetails, cartState);
+                            const cartList = await handleAddToList({ productDetails: props.productdetails, listState: cartState, addProductFn: addToCart });
+                            console.log(cartList)
                             cartDispatch({ type: 'UPDATE_CART', payload: cartList })
                         } else {
                             navigate('/login')

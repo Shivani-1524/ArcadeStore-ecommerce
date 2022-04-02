@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import './WishlistPage.css'
 import WishlistCard from './WishlistComponents/WishlistCard'
 import Navbar from '../../Components/Navbar/Navbar'
-import { useWishlist } from '../../Contexts/WishlistProvider'
+import { useWishlist } from '../../Contexts/index'
 const axios = require('axios');
 
 const WishlistPage = () => {

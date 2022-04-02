@@ -1,22 +1,22 @@
 import React from 'react';
-import { addProductQty, reduceProductQty, removeFromCart, findCartProduct } from '../../../Util/CartUtilities';
-import { addToWishlist } from '../../../Util/WishlistUtilities';
-import { useCart } from '../../../Contexts/CartProvider'
-import { useWishlist } from '../../../Contexts/WishlistProvider'
+import { addProductQty, reduceProductQty, removeFromCart, addToWishlist, findProductInList } from '../../../Util/index';
+import { useCart, useWishlist } from '../../../Contexts/index'
 
 const CartProduct = ({ cartItem }) => {
     const { title, imgSrc, altTxt, subtitle, qty, reviewsnum, currentprice, discount, originalprice, rating, shortdesc } = cartItem
     const { cartDispatch } = useCart()
     const { wishlistState, wishlistDispatch } = useWishlist()
+
     const updateCartList = async (product, getUpdatedCart) => {
         const updatedCart = await getUpdatedCart(product)
         cartDispatch({ type: 'UPDATE_CART', payload: updatedCart })
     }
+
     const moveFromCart = async (cartProduct) => {
         const newWishlist = []
         const updatedCart = await removeFromCart(cartProduct)
         cartDispatch({ type: 'UPDATE_CART', payload: updatedCart })
-        const foundId = findCartProduct(cartProduct._id, wishlistState)
+        const foundId = findProductInList(cartProduct._id, wishlistState)
         if (!foundId) {
             newWishlist = await addToWishlist(cartProduct)
         } else {
@@ -24,14 +24,13 @@ const CartProduct = ({ cartItem }) => {
             newWishlist = await wishlistState
         }
         wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: newWishlist })
-
     }
 
     return (
         <div className="card hor-card mg-t-30">
             <i onClick={() => updateCartList(cartItem, removeFromCart)} className="close-icon fas fa-times-circle"></i>
             <div className="img-container">
-                <img src={imgSrc} alt={altTxt} />
+                <img className='img-resp' src={imgSrc} alt={altTxt} />
             </div>
             <div className="text-card">
                 <p className="md-booky-title bold">{title}</p>
