@@ -4,7 +4,7 @@ import Navbar from "../../Components/Navbar/Navbar"
 import './CartPage.css'
 import { CartSummary } from './CartComponents/CartSummary'
 import { CartProduct } from './CartComponents/CartProduct'
-const axios = require('axios');
+import axios from 'axios'
 import { useCart } from '../../Contexts/CartProvider'
 
 

@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios'
 const encodedToken = localStorage.getItem('userToken')
 
 const addToWishlist = async (wishlistProduct) => {

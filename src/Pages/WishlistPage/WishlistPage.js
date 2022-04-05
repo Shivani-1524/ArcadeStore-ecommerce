@@ -4,7 +4,7 @@ import './WishlistPage.css'
 import WishlistCard from './WishlistComponents/WishlistCard'
 import Navbar from '../../Components/Navbar/Navbar'
 import { useWishlist } from '../../Contexts/index'
-const axios = require('axios');
+import axios from 'axios'
 
 const WishlistPage = () => {
     const { wishlistDispatch, wishlistState } = useWishlist()

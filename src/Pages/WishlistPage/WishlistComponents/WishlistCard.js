@@ -23,7 +23,7 @@ const WishlistCard = ({ wishProduct }) => {
             newCartList = await addToCart(wishlistProduct)
         } else {
             console.log("product already in cart. update qty in cart page.")
-            newCartList = await cartState
+            newCartList = cartState
         }
         cartDispatch({ type: 'UPDATE_CART', payload: newCartList })
     }

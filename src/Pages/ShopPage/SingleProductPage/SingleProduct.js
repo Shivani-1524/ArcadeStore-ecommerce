@@ -92,9 +92,9 @@ const SingleProduct = (props) => {
                                 Add to Bag
                             </button>
                         </div>
-                        <p className="sm-title mg-t-20">PRODUCT DESCRIPTION</p>
+                        <p className="md-title mg-t-20">Product Description</p>
                         <p className="rg-p">{description}</p>
-                        <p className="sm-title mg-t-20">PRODUCT SPECS</p>
+                        <p className="md-title mg-t-20">Product Specification</p>
                         <p className="rg-p">{specs}</p>
                     </div>
                 </div>
