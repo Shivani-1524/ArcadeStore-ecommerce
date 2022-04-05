@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Sidenav.css";
 import { useFilter } from '../../../../Contexts/FilterProvider'
 
-const Sidenav = () => {
-
+const Sidenav = ({ enabledFilter, enabledGame }) => {
     const { dispatch, filteredState } = useFilter()
+
+    useEffect(() => {
+        enabledFilter && handleCategoryFilter(true, enabledFilter)
+        enabledGame && handleGameFilter(true, enabledGame)
+    }, []);
 
     // const handleClearFilters = () => {
     //     console.log('dawdawdawd')
-
     // }
     //dosent work unless function is inline
 
@@ -80,13 +83,18 @@ const Sidenav = () => {
         val: filteredState.gameCategory.showGenshin
     }]
 
+    const handleCategoryFilter = (chkVal, categoryName) =>
+        dispatch({ type: "FILTER", payload: { value: chkVal, filterKey: categoryName } })
+
+    const handleGameFilter = (chkVal, gameType) =>
+        dispatch({ type: "GAME_FILTER", payload: { value: chkVal, filterKey: gameType } })
+
     const GameFilterLabel = ({ filterLabelData }) => {
         const { key, title, idName, val } = filterLabelData
-        const handleGameFilter = (e, gameType) => dispatch({ type: "GAME_FILTER", payload: { value: e.target.checked, filterKey: gameType } })
 
         return (
             <div className="category-check mg-t-15">
-                <input checked={val} onChange={(e) => handleGameFilter(e, key)} type="checkbox" id={idName} />
+                <input checked={val} onChange={(e) => handleGameFilter(e.target.checked, key)} type="checkbox" id={idName} />
                 <label htmlFor={idName}>{title}</label>
             </div>
         )
@@ -108,14 +116,11 @@ const Sidenav = () => {
 
     const CategoryFilterLabel = ({ filterLabelData }) => {
         const { title, idName, key, val } = filterLabelData;
-
-        const handleCategoryFilter = (e, categoryName) => {
-            dispatch({ type: "FILTER", payload: { value: e.target.checked, filterKey: categoryName } })
-        }
+        console.log(title, idName, key, val)
 
         return (
             <div className="category-check mg-t-15">
-                <input checked={val} onChange={(e) => handleCategoryFilter(e, key)} type="checkbox" id={idName} />
+                <input checked={val} onChange={(e) => handleCategoryFilter(e.target.checked, key)} type="checkbox" id={idName} />
                 <label htmlFor={idName}>{title}</label>
             </div>
         )
@@ -158,7 +163,6 @@ const Sidenav = () => {
                     <label htmlFor='outofstock'>Hide Out of Stock</label>
                 </div>
             </div>
-
         </aside>
 
     )

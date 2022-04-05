@@ -3,33 +3,46 @@ import { useNavigate } from 'react-router-dom'
 import './WishlistPage.css'
 import WishlistCard from './WishlistComponents/WishlistCard'
 import Navbar from '../../Components/Navbar/Navbar'
-import { useWishlist } from '../../Contexts/index'
+import { useWishlist, useAuth, useToast } from '../../Contexts/index'
 const axios = require('axios');
 
 const WishlistPage = () => {
     const { wishlistDispatch, wishlistState } = useWishlist()
-    const encodedToken = localStorage.getItem('userToken')
+    const { isLoggedIn } = useAuth()
+    const { dispatchToast } = useToast()
+
+    const addToast = (toastMsg, type) => {
+        dispatchToast({
+            type: 'ADD_TOAST', payload: {
+                title: toastMsg,
+                toastType: type
+            }
+        })
+    }
+
+    const redirectToLogin = () => {
+        navigate('/login')
+        addToast('Please Login To Proceed', 'TOAST_ERROR')
+    }
+
     const navigate = useNavigate()
     useEffect(() => {
-        encodedToken ? (async () => {
+        isLoggedIn ? (async () => {
             try {
                 const res = await axios({
                     method: "GET",
                     url: "/api/user/wishlist",
                     headers: {
-                        authorization: encodedToken
+                        authorization: isLoggedIn
                     }
                 })
                 const wishlist = res.data.wishlist
                 wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: wishlist })
             } catch (err) {
                 console.error(err)
+                addToast('Unexpected Error has occurred. please try again later', 'TOAST_ERROR')
             }
-        })() : navigate('/login')
-        // navigate('/login', {
-        //     errTxt: 'Login to Access Your Cart Page',
-        //     prevRoute: '/cart'
-        // })
+        })() : redirectToLogin()
     }, [])
     return (
         <div>

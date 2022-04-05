@@ -22,7 +22,7 @@ const SignupPage = () => {
                 { ...signupData }
             )
             if (res.status === 200) {
-                setIsLoggedIn(true)
+                setIsLoggedIn(res.data.encodedToken)
                 localStorage.setItem("userToken", res.data.encodedToken);
                 setUserExistError(false)
                 setSignupError(false)

@@ -2,11 +2,14 @@ import React from 'react';
 import "./Navbar.css";
 import { Link } from "react-router-dom"
 import NavLogo from "../../Assets/nav-logo.png"
-import { useAuth } from '../../Contexts/UserProvider';
+import { useAuth, useCart, useWishlist } from '../../Contexts/index';
 import './Navbar.css'
 
 const Navbar = () => {
     const { isLoggedIn, setIsLoggedIn } = useAuth()
+    const { cartState } = useCart()
+    const { wishlistState } = useWishlist()
+    console.log('Caert State', cartState)
     const handleUserLogout = () => {
         localStorage.removeItem('userToken');
         setIsLoggedIn(false)
@@ -38,13 +41,19 @@ const Navbar = () => {
                     </Link>
                 }
                 <Link to='/wishlist'>
-                    <button id="dark-bg-icon" className="btn icon-btn hide-md">
+                    <button id="dark-bg-icon" className="btn icon-btn pos-rel hide-md">
                         <i className="fa fa-solid fa-heart"></i>
+                        {isLoggedIn && wishlistState.length > 0 && <div className="badge num-badge center-items">
+                            <p className="xsm-title">{wishlistState.length > 9 ? '9+' : wishlistState.length}</p>
+                        </div>}
                     </button>
                 </Link>
                 <Link to='/cart'>
-                    <button id="dark-bg-icon" className="btn icon-btn hide-md">
+                    <button id="dark-bg-icon" className="btn icon-btn pos-rel hide-md">
                         <i className="fas fa-shopping-cart"></i>
+                        {isLoggedIn && cartState.length > 0 && <div className="badge num-badge center-items">
+                            <p className="xsm-title">{cartState.length > 9 ? '9+' : cartState.length}</p>
+                        </div>}
                     </button>
                 </Link>
                 <button id="dark-bg-icon" className="btn icon-btn show-md">

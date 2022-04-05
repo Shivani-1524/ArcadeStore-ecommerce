@@ -116,3 +116,8 @@ a {
 .forgot-pswd:hover {
   cursor: pointer;
 }
+
+.num-badge{
+  top: -5px;
+  right: -9px;
+}

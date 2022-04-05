@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from 'react'
-import { filterReducer, initialState } from '../Reducers/FilterReducer'
 
 const UserContext = createContext()
 const useAuth = () => useContext(UserContext)

@@ -1,10 +1,12 @@
 import './App.css';
 import { HomePage, LoginPage, LogoutPage, SignupPage, SingleProduct, ShopPage, CartPage, WishlistPage } from './Pages/index'
 import { Routes, Route } from 'react-router-dom';
+import Toast from './Components/Toast/Toast'
 
 function App() {
   return (
     <div className="App">
+      <Toast />
       <Routes>
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/singleprod" element={<SingleProduct />} />

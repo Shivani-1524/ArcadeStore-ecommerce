@@ -1,0 +1,25 @@
+.bottom-right{
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+
+.toast{
+    margin: 10px 10px;
+    animation: toast-in-right 0.4s;
+}
+
+.toast i{
+  cursor: pointer;
+}
+
+@keyframes toast-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }

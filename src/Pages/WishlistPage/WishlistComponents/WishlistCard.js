@@ -1,31 +1,34 @@
 import React from 'react'
 import '../WishlistPage.css'
 import { Link } from 'react-router-dom'
-import { removeFromWishlist, addToCart, findProductInList } from '../../../Util/index'
-import { useCart, useWishlist } from '../../../Contexts/index'
+import { removeFromWishlist, addToCart, setToast, handleAddToList } from '../../../Util/index'
+import { useCart, useWishlist, useToast } from '../../../Contexts/index'
 
 const WishlistCard = ({ wishProduct }) => {
     const { imgSrc, title, currentprice, discount, originalprice, altTxt } = wishProduct
     const { wishlistDispatch } = useWishlist()
+    const { dispatchToast } = useToast()
     const { cartDispatch, cartState } = useCart()
+
 
     const deleteFromWishlist = async (wishlistProduct) => {
         const newWishlist = await removeFromWishlist(wishlistProduct)
         wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: newWishlist })
+        dispatchToast({
+            type: 'ADD_TOAST', payload: {
+                title: 'Removed From Your WishList',
+                toastType: 'TOAST_SUCCESS'
+            }
+        })
     }
 
     const moveFromWishlist = async (wishlistProduct) => {
-        const newCartList = []
-        const newWishlist = await removeFromWishlist(wishlistProduct)
-        wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: newWishlist })
-        const foundId = findProductInList(wishlistProduct._id, cartState)
-        if (!foundId) {
-            newCartList = await addToCart(wishlistProduct)
-        } else {
-            console.log("product already in cart. update qty in cart page.")
-            newCartList = await cartState
-        }
-        cartDispatch({ type: 'UPDATE_CART', payload: newCartList })
+        const { updatedList, toastMsg } = await handleAddToList({ productDetails: wishlistProduct, listState: cartState, addProductFn: addToCart })
+        cartDispatch({ type: 'UPDATE_CART', payload: updatedList })
+        toastMsg !== 'Exists' && deleteFromWishlist(wishProduct)
+        dispatchToast({
+            type: 'ADD_TOAST', payload: setToast(toastMsg, 'Wishlist')
+        })
     }
 
     return (

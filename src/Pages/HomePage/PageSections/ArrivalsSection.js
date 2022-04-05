@@ -11,8 +11,8 @@ const ArrivalsSection = () => {
                 NEW ARRIVALS
             </h1>
             <div className="grid-layout-5050 mg-t-40 dark-bg">
-                <NewArrivalCard imgSrc={XiaoHome} title='Fresh Collection of Genshin Posters' />
-                <NewArrivalCard imgSrc={CollectiblesVal} title='Valorant collectibles' />
+                <NewArrivalCard imgSrc={XiaoHome} title='Fresh Collection of Genshin Posters' filterGameKey={"showGenshin"} filterCatKey={"showCollectibles"} />
+                <NewArrivalCard imgSrc={CollectiblesVal} title='Valorant collectibles' filterGameKey={"showValorant"} filterCatKey={"showCollectibles"} />
             </div>
         </section>
     )

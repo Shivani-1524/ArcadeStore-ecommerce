@@ -18,14 +18,15 @@ const LoginPage = () => {
         try {
             const res = await axios.post('/api/auth/login', { ...loginData })
             if (res.status === 200) {
-                setIsLoggedIn(true)
+                localStorage.setItem("userToken", res.data.encodedToken);
+                setIsLoggedIn(res.data.encodedToken)
                 setLoginError(false)
                 setUserNotFoundError(false)
                 navigate('/')
             }
-            localStorage.setItem("userToken", res.data.encodedToken);
         } catch (err) {
             setIsLoggedIn(false)
+            setLogToken(null)
             setLoginError(true)
             if (err.response.status === 404) {
                 setLoginError(false)
