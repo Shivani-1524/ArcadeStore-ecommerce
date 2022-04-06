@@ -2,8 +2,6 @@ const initToastState = {
     toastList: []
 }
 const toastReducer = (state, { type, payload }) => {
-    console.log(state)
-    console.log(type, payload)
     let toastProperties;
     switch (type) {
         case 'ADD_TOAST':

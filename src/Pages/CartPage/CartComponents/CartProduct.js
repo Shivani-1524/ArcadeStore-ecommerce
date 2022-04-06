@@ -16,7 +16,6 @@ const CartProduct = ({ cartItem }) => {
 
     const moveFromCart = async (cartProduct) => {
         const { updatedList, toastMsg } = await handleAddToList({ addProductFn: addToWishlist, listState: wishlistState, productDetails: cartProduct })
-        console.log('tyty', updatedList, toastMsg)
         toastMsg !== "Exists" && updateCartList(cartProduct, removeFromCart)
         wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: updatedList })
         dispatchToast({

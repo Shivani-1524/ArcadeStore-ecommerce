@@ -2,7 +2,7 @@ import React from 'react'
 import '../HomePage.css'
 import { Link } from 'react-router-dom'
 
-const NewArrivalCard = ({ imgSrc, title, filterGameKey, filterCatKey }) => {
+const NewArrivalCard = ({ imgSrc, imgAlt, title, filterGameKey, filterCatKey }) => {
     return (
         <div className="img-wrapper pos-rel">
             <div className="grid-txt-overlay pos-abs">
@@ -12,7 +12,7 @@ const NewArrivalCard = ({ imgSrc, title, filterGameKey, filterCatKey }) => {
                     </button>
                 </Link>
             </div>
-            <img className="img-resp" src={imgSrc} alt="Xiao Genshin Poster" />
+            <img className="img-resp" src={imgSrc} alt={imgAlt} />
         </div>
     )
 }

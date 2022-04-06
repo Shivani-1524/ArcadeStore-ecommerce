@@ -10,10 +10,10 @@ const CategoriesSection = () => {
                 CATEGORIES TO BAG
             </h1>
             <div className="flex-row center-row mg-t-40">
-                <CategoryCard img={Hoodie} caption='Clothing' filterCatKey='showClothing' />
-                <CategoryCard img={PS5} caption='Gadgets' filterCatKey='showGadgets' />
-                <CategoryCard img={CyberPunk} caption='Game Discs' filterCatKey='showGameCDs' />
-                <CategoryCard img={Headphone} caption='Fandom Collectibles' filterCatKey='showCollectibles' />
+                <CategoryCard img={Hoodie} imgAlt={'Black Hoodie'} caption='Clothing' filterCatKey='showClothing' />
+                <CategoryCard img={PS5} imgAlt={'Controller Gadget'} caption='Gadgets' filterCatKey='showGadgets' />
+                <CategoryCard img={CyberPunk} imgAlt={'Game CD'} caption='Game Discs' filterCatKey='showGameCDs' />
+                <CategoryCard img={Headphone} imgAlt={'Headphone'} caption='Fandom Collectibles' filterCatKey='showCollectibles' />
             </div>
         </section>
     )
