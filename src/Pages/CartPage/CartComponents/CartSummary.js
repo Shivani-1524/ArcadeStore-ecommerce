@@ -1,11 +1,12 @@
 import React from 'react'
 import '../CartPage.css'
+import { Link } from 'react-router-dom'
 import { useCart } from '../../../Contexts/CartProvider'
 
 const CartSummary = () => {
     const { cartState } = useCart();
     const getSavedAmt = () => cartState.reduce((prev, acc) => {
-        return prev += acc.originalprice - acc.currentprice
+        return prev += acc.originalprice ? (acc.originalprice - acc.currentprice) : 0
     }, 0)
     const getTotalAmt = () => cartState.reduce((prev, acc) => {
         return prev += acc.currentprice * acc.qty
@@ -38,7 +39,7 @@ const CartSummary = () => {
                     <p className="sm-title">Rs {getTotalAmt()} </p>
                 </div>
                 <p className="grey-txt">You will save <span className="violet-txt bold">Rs.{getSavedAmt()}</span> on this order</p>
-                <button className="btn primary-btn solid mg-t-10">PLACE ORDER</button>
+                <Link to="/profile"> <button className="btn primary-btn solid mg-t-10">PLACE ORDER</button></Link>
             </div>
         </div>
     )

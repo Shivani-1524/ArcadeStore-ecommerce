@@ -1,0 +1,24 @@
+
+.profile-section{
+    margin-top: 6.9rem;
+    margin-bottom: 6.9rem;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    width: 30rem;
+    margin: auto;
+  }
+
+  .details-section{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 80%;
+      margin: auto;
+  }
+  .mg-auto{
+      display: block;
+      margin:auto
+  }

@@ -23,7 +23,6 @@ const removeFromWishlist = async (wishlistProduct) => {
             authorization: encodedToken
         }
     })
-    console.log(res)
     return res.data.wishlist
 }
 

@@ -9,7 +9,6 @@ const Navbar = () => {
     const { isLoggedIn, setIsLoggedIn } = useAuth()
     const { cartState } = useCart()
     const { wishlistState } = useWishlist()
-    console.log('Caert State', cartState)
     const handleUserLogout = () => {
         localStorage.removeItem('userToken');
         setIsLoggedIn(false)
