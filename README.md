@@ -1,5 +1,10 @@
 # ArcadeStore-ecommerce
-Everything related to Gaming available in one site from fandom merch to gaming CDs
+Everything related to Gaming available in one site from fandom merch to gaming CDs.
+- *Note* : Please reload the page after the netlify preview loads to ensure the working of the site.
+- Auth Details ->
+email: test@email.com
+password: test
+
 
 ## Features
 
