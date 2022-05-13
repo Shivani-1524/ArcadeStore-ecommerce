@@ -1,8 +1,7 @@
 import axios from 'axios'
-const encodedToken = localStorage.getItem('userToken')
-
 
 const addToCart = async (cartProduct) => {
+    const encodedToken = localStorage.getItem('userToken')
     const res = await axios({
         method: "POST",
         url: "/api/user/cart",
@@ -18,6 +17,7 @@ const addToCart = async (cartProduct) => {
 
 
 const removeFromCart = async (cartProduct) => {
+    const encodedToken = localStorage.getItem('userToken')
     const res = await axios({
         method: "DELETE",
         url: `/api/user/cart/${cartProduct._id}`,
@@ -29,6 +29,7 @@ const removeFromCart = async (cartProduct) => {
 }
 
 const addProductQty = async (cartProduct) => {
+    const encodedToken = localStorage.getItem('userToken')
     const res = await axios({
         method: "POST",
         url: `/api/user/cart/${cartProduct._id}`,
@@ -45,6 +46,7 @@ const addProductQty = async (cartProduct) => {
 }
 
 const reduceProductQty = async (cartProduct) => {
+    const encodedToken = localStorage.getItem('userToken')
     const res = await axios({
         method: "POST",
         url: `/api/user/cart/${cartProduct._id}`,

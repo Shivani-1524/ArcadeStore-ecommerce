@@ -13,7 +13,7 @@ const Sidenav = ({ enabledFilter, enabledGame }) => {
     // const handleClearFilters = () => {
     //     console.log('dawdawdawd')
     // }
-    //dosent work unless function is inline
+    //dosent work unless function is inline WHY?
 
 
     const categoryFilterObject = [

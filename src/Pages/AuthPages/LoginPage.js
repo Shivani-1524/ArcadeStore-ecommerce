@@ -17,9 +17,9 @@ const LoginPage = () => {
         e.preventDefault()
         try {
             const res = await axios.post('/api/auth/login', { ...loginData })
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 201) {
+                setIsLoggedIn(res.data.encodedToken);
                 localStorage.setItem("userToken", res.data.encodedToken);
-                setIsLoggedIn(res.data.encodedToken)
                 setLoginError(false)
                 setUserNotFoundError(false)
                 navigate('/')

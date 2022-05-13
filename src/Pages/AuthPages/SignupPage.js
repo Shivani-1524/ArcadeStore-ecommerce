@@ -39,12 +39,6 @@ const SignupPage = () => {
         }
     }
 
-    // const formFieldData = [
-    //     { labelFor: 'firstName', labelTitle: 'First Name', placeholderText: 'Enter First Name', objKey: 'firstName' },
-    //     { labelFor: 'lastName', labelTitle: 'Last Name', placeholderText: 'Enter Last Name', objKey: 'lastName' },
-    //     { labelFor: 'email', labelTitle: 'Email', placeholderText: 'Enter email address', objKey: 'email' },
-    //     { labelFor: 'password', labelTitle: 'Password', placeholderText: "6+ characters", objKey: 'password' }
-    // ]
 
     return (
         <div>

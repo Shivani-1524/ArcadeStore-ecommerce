@@ -1,7 +1,6 @@
 import React from "react";
 
 const FormInput = ({ props, onChange }) => {
-    console.log(props);
     const { labelFor, labelTitle, placeholderText, inputType } = props;
     return (
         <div className="mg-t-20">

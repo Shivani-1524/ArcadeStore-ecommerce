@@ -9,22 +9,6 @@ const Test = () => {
             name: "meow",
             town: "adwwa"
         };
-        // (async () => {
-        //     console.log('TEST')
-        //     axios.defaults.headers.common['authorization'] = loggedToken
-
-        //     const res = await axios({
-        //         method: "POST",
-        //         url: "/api/user/address",
-        //         headers: {
-        //             authorization: loggedToken
-        //         },
-        //         data: {
-        //             address
-        //         }
-        //     })
-        //     console.log(res)
-        // })()
         (async () => {
             axios.defaults.headers.common['authorization'] = loggedToken
 
@@ -35,7 +19,6 @@ const Test = () => {
                     authorization: loggedToken
                 }
             })
-            console.log(res)
         })()
     }, [])
     return (
