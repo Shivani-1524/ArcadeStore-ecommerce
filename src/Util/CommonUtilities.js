@@ -5,7 +5,6 @@ const handleAddToList = async ({ productDetails, listState, addProductFn }) => {
         let newList = await addProductFn(productDetails)
         return { updatedList: newList, toastMsg: 'Added' }
     } else {
-        console.log("product already in cart. update qty in cart page.")
         let newList = await listState
         return { updatedList: newList, toastMsg: 'Exists' }
     }

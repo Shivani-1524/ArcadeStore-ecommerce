@@ -1,7 +1,8 @@
 import axios from 'axios'
-const encodedToken = localStorage.getItem('userToken')
+
 
 const addToWishlist = async (wishlistProduct) => {
+    const encodedToken = localStorage.getItem('userToken')
     const res = await axios({
         method: "POST",
         url: "/api/user/wishlist",
@@ -16,6 +17,7 @@ const addToWishlist = async (wishlistProduct) => {
 }
 
 const removeFromWishlist = async (wishlistProduct) => {
+    const encodedToken = localStorage.getItem('userToken')
     const res = await axios({
         method: "DELETE",
         url: `/api/user/wishlist/${wishlistProduct._id}`,
@@ -23,7 +25,6 @@ const removeFromWishlist = async (wishlistProduct) => {
             authorization: encodedToken
         }
     })
-    console.log(res)
     return res.data.wishlist
 }
 

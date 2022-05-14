@@ -22,6 +22,12 @@ import {
   getWishlistItemsHandler,
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
+import {
+  deleteAddressFromProfile,
+  editAddress,
+  addAddressToProfile,
+  getAddressItemsHandler
+} from "./backend/controllers/AddressController"
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
@@ -38,6 +44,7 @@ export function makeServer({ environment = "development" } = {}) {
       user: Model,
       cart: Model,
       wishlist: Model,
+      addresses: Model
     },
 
     // Runs on the start of the server
@@ -49,7 +56,7 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [] })
+        server.create("user", { ...item, cart: [], wishlist: [], addresses: [] })
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
@@ -77,6 +84,12 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/cart/:productId",
         removeItemFromCartHandler.bind(this)
       );
+
+      //address router (private)
+      this.post("/user/address", addAddressToProfile.bind(this));
+      this.get("/user/address", getAddressItemsHandler.bind(this));
+      // this.post("/user/address", editAddress.bind(this));
+      this.delete("/user/address/:addressId", deleteAddressFromProfile.bind(this));
 
       // wishlist routes (private)
       this.get("/user/wishlist", getWishlistItemsHandler.bind(this));

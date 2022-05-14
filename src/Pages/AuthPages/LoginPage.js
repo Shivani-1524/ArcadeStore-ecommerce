@@ -17,18 +17,17 @@ const LoginPage = () => {
         e.preventDefault()
         try {
             const res = await axios.post('/api/auth/login', { ...loginData })
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 201) {
+                setIsLoggedIn(res.data.encodedToken);
                 localStorage.setItem("userToken", res.data.encodedToken);
-                setIsLoggedIn(res.data.encodedToken)
                 setLoginError(false)
                 setUserNotFoundError(false)
                 navigate('/')
             }
         } catch (err) {
-            setIsLoggedIn(false)
-            setLogToken(null)
+            setIsLoggedIn(null)
             setLoginError(true)
-            if (err.response.status === 404) {
+            if (err?.response?.status === 404) {
                 setLoginError(false)
                 setUserNotFoundError(true)
                 return;
@@ -56,10 +55,7 @@ const LoginPage = () => {
                         <button onClick={handleUserLogin} className="btn primary-btn solid mg-t-20">
                             Log In
                         </button>
-
                     </form>
-
-
                     <Link to="/signup">
                         <button className="btn warning-outlined-btn mg-t-10">
                             New User? Sign Up

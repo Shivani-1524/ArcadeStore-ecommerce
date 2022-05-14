@@ -6,7 +6,6 @@ const useAuth = () => useContext(UserContext)
 const UserProvider = ({ children }) => {
     let loggedToken = localStorage.getItem('userToken')
     const [isLoggedIn, setIsLoggedIn] = useState(loggedToken);
-
     return (
         <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
             {children}

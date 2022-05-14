@@ -46,8 +46,9 @@ const CartProduct = ({ cartItem }) => {
                 </div>
                 <div className="mg-t-5 price-row">
                     <p className="md-title">Rs. {currentprice}</p>
-                    <p className="sm-p grey-txt striked-txt">Rs. {originalprice}</p>
-                    <p className="sm-p orange-txt">{discount}% OFF</p>
+                    {discount && <p className="sm-p grey-txt striked-txt">Rs. {originalprice}</p>}
+                    {discount && <p className="sm-p orange-txt">{discount}% OFF</p>}
+
                 </div>
                 <div className="card-btn-row mg-t-15">
                     <button onClick={() => moveFromCart(cartItem)} className="btn warning-btn solid sm-btn">Move to Wishlist</button>

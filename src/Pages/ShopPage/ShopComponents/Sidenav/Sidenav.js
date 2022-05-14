@@ -13,7 +13,7 @@ const Sidenav = ({ enabledFilter, enabledGame }) => {
     // const handleClearFilters = () => {
     //     console.log('dawdawdawd')
     // }
-    //dosent work unless function is inline
+    //dosent work unless function is inline WHY?
 
 
     const categoryFilterObject = [
@@ -116,8 +116,6 @@ const Sidenav = ({ enabledFilter, enabledGame }) => {
 
     const CategoryFilterLabel = ({ filterLabelData }) => {
         const { title, idName, key, val } = filterLabelData;
-        console.log(title, idName, key, val)
-
         return (
             <div className="category-check mg-t-15">
                 <input checked={val} onChange={(e) => handleCategoryFilter(e.target.checked, key)} type="checkbox" id={idName} />

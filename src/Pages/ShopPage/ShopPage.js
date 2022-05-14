@@ -36,7 +36,6 @@ const ShopPage = () => {
                 <section className="products-section">
                     {shopData && filteredProductList.map((product) => {
                         const itemInWishlist = wishlistState.length !== 0 && wishlistState.some(wishlistItem => product._id === wishlistItem._id)
-                        // console.log(itemInWishlist, product)
                         return <ProductCard productdetails={product} key={product._id} inWishlist={itemInWishlist} />
                     })}
                 </section>

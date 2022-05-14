@@ -8,4 +8,4 @@ import WishlistPage from './WishlistPage/WishlistPage';
 import SingleProduct from './ShopPage/SingleProductPage/SingleProduct';
 import ProfilePage from './ProfilePage/ProfilePage'
 
-export { HomePage, LoginPage, LogoutPage, SignupPage, ShopPage, SingleProduct, CartPage, WishlistPage }
+export { HomePage, LoginPage, LogoutPage, SignupPage, ShopPage, SingleProduct, CartPage, WishlistPage, ProfilePage }
