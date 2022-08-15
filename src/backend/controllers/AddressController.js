@@ -48,33 +48,33 @@ export const addAddressToProfile = function (schema, request) {
     }
 };
 
-export const deleteAddressFromProfile = function (schema, request) {
-    const userId = requiresAuth.call(this, request);
-    try {
-        if (!userId) {
-            new Response(
-                404,
-                {},
-                {
-                    errors: ["The email you entered is not Registered. Not Found error"],
-                }
-            );
-        }
+// export const deleteAddressFromProfile = function (schema, request) {
+//     const userId = requiresAuth.call(this, request);
+//     try {
+//         if (!userId) {
+//             new Response(
+//                 404,
+//                 {},
+//                 {
+//                     errors: ["The email you entered is not Registered. Not Found error"],
+//                 }
+//             );
+//         }
 
-        const addressId = request.params.addressId;
-        userAddress = userAddress.filter((item) => item._id !== addressId);
-        this.db.users.update({ _id: userId }, { addresses: userAddress });
-        return new Response(201, {}, { addresses: userAddress });
-    } catch (error) {
-        return new Response(
-            500,
-            {},
-            {
-                error,
-            }
-        );
-    }
-};
+//         const addressId = request.params.addressId;
+//         userAddress = userAddress.filter((item) => item._id !== addressId);
+//         this.db.users.update({ _id: userId }, { addresses: userAddress });
+//         return new Response(201, {}, { addresses: userAddress });
+//     } catch (error) {
+//         return new Response(
+//             500,
+//             {},
+//             {
+//                 error,
+//             }
+//         );
+//     }
+// };
 
 export const editAddress = function (schema, request) {
     const userId = requiresAuth.call(this, request);

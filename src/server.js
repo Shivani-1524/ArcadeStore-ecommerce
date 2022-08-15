@@ -23,14 +23,12 @@ import {
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
 import {
-  deleteAddressFromProfile,
-  editAddress,
   addAddressToProfile,
   getAddressItemsHandler
 } from "./backend/controllers/AddressController"
-import { categories } from "./backend/db/categories";
-import { products } from "./backend/db/products";
-import { users } from "./backend/db/users";
+import { categories } from "./backend/db/categories.ts";
+import { products } from "./backend/db/products.ts";
+import { users } from "./backend/db/users.ts";
 
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
@@ -89,7 +87,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/user/address", addAddressToProfile.bind(this));
       this.get("/user/address", getAddressItemsHandler.bind(this));
       // this.post("/user/address", editAddress.bind(this));
-      this.delete("/user/address/:addressId", deleteAddressFromProfile.bind(this));
+      // this.delete("/user/address/:addressId", deleteAddressFromProfile.bind(this));
 
       // wishlist routes (private)
       this.get("/user/wishlist", getWishlistItemsHandler.bind(this));

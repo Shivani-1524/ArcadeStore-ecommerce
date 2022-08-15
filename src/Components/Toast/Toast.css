@@ -9,6 +9,8 @@
 .toast{
     margin: 10px 10px;
     animation: toast-in-right 0.4s;
+    min-width: 450px;
+    max-width: max-content;
 }
 
 .toast i{
