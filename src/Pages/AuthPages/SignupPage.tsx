@@ -6,14 +6,16 @@ import { FormInput, Navbar } from './index'
 import {validateSignupForm} from '../../Util/FormValidators'
 import { useAuth } from '../../Contexts/UserProvider'
 import { FormErrorsType } from '../../Components/FormInput';
+import { signupUser } from '../../Util/AuthUtilities';
 
+export type SignupDataType = {
+    firstName: string, lastName: string, email: string, password: string, tncChk: boolean 
+}
 
 const SignupPage = () => {
     const { setIsLoggedIn } = useAuth()
     const navigate = useNavigate()
-    type SignupDataType = {
-        firstName: string, lastName: string, email: string, password: string, tncChk: boolean 
-    }
+    
     const initialSignupValues = {
         firstName: '', lastName: '', email: '', password: '', tncChk: false
     }
@@ -38,16 +40,16 @@ const SignupPage = () => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             (async () => {
                 try {
-                    const res = await axios.post(
-                        '/api/auth/signup',
-                        { ...signupData }
-                    )
-                    if (res.status === 201) {
-                        setIsLoggedIn(res.data.encodedToken)
-                        localStorage.setItem("userToken", res.data.encodedToken);
+                    const {success, data} = await signupUser(signupData)
+                    if (success) {
+                        setIsLoggedIn(data.encodedToken)
+                        localStorage.setItem("userToken", data.encodedToken);
                         navigate("/")
+                    }else{
+                        throw data
                     }
                 } catch (err:unknown) {
+                    console.error(err)
                     if(err instanceof Error) {
                      const msg = err.message
                      if(msg == "Request failed with status code 422") setAuthError("Email already exists. Please Login.")

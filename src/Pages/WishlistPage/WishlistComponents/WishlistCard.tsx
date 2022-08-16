@@ -17,14 +17,16 @@ const WishlistCard = ({ wishProduct } : ComponentProps) => {
 
 
     const deleteFromWishlist = async (wishlistProduct : Product) => {
-        const newWishlist = await removeFromWishlist(wishlistProduct)
-        wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: newWishlist })
-        dispatchToast({
-            type: 'ADD_TOAST', payload: {
-                title: 'Removed From Your WishList',
-                toastType: 'TOAST_SUCCESS'
-            }
-        })
+        const {data, success} = await removeFromWishlist(wishlistProduct)
+        if(success){
+            wishlistDispatch({ type: 'UPDATE_WISHLIST', payload: data })
+            dispatchToast({
+                type: 'ADD_TOAST', payload: {
+                    title: 'Removed From Your WishList',
+                    toastType: 'TOAST_SUCCESS'
+                }
+            })
+        }
     }
 
     const moveFromWishlist = async (wishlistProduct : Product) => {

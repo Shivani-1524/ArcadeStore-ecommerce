@@ -5,20 +5,22 @@ import { useState, useEffect } from 'react'
 import { FormInput, Navbar } from './index'
 import { validateLoginForm } from '../../Util/FormValidators';
 import { useAuth } from '../../Contexts/UserProvider'
-import { FormErrorsType, FormValuesType} from '../../Components/FormInput';
-import { AxiosResponse, AxiosError } from 'axios'
+import { FormErrorsType} from '../../Components/FormInput';
+import { loginUser } from '../../Util/AuthUtilities';
 
+
+export type LoginDataValues = {
+    email: string, password: string,
+}
 
 const LoginPage = () => {
     const navigate = useNavigate()
     const {setIsLoggedIn} = useAuth()
-
-    type LoginDataValues = {
-        email: string, password: string,
-    }
     const initialLoginValues = {
         email: '', password: '',
     }
+  
+   
 
     const [loginData, setLoginData] = useState<LoginDataValues>(initialLoginValues)
     const [formErrors, setFormErrors] = useState<FormErrorsType>({})
@@ -48,8 +50,6 @@ const LoginPage = () => {
         setFormErrors({});
         setIsSubmit(true);
     }
-
-
       
     
         useEffect(() => {
@@ -57,14 +57,17 @@ const LoginPage = () => {
                 console.log("LOGIN DATA IS VALID");
                 (async () => {
                     try {
-                        const res = await axios.post('/api/auth/login', { ...loginData })
-                        console.log("LOGIN API RES",res)
-                        if (res.status === 200) {
-                            setIsLoggedIn(res.data.encodedToken);
-                            localStorage.setItem("userToken", res.data.encodedToken);
+                        const {data, success} = await loginUser(loginData)
+                        console.log("LOGIN API RES",data)
+                        if (success) {
+                            setIsLoggedIn(data.encodedToken);
+                            localStorage.setItem("userToken", data.encodedToken);
                             navigate('/')
+                        }else{
+                            throw data
                         }
                     } catch (err:unknown) {
+                        console.error(err)
                        if(err instanceof Error) {
                         const msg = err.message
                         if(msg == "Request failed with status code 404") setAuthError("Your email is not valid")
