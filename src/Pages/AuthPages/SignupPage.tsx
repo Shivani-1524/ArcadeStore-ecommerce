@@ -29,9 +29,9 @@ const SignupPage = () => {
         name !== "tncChk" ? setSignupData({ ...signupData, [name]: value }) : setSignupData({ ...signupData, [name]: e.target.checked })
     }
 
-    const handleUserSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleUserSignup = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const errorObj = await validateSignupForm(signupData)
+        const errorObj = validateSignupForm(signupData)
         setFormErrors(errorObj);
         setIsSubmit(true);
     }
@@ -78,7 +78,7 @@ const SignupPage = () => {
                             props={{value: signupData.email, labelFor: 'email', labelTitle: 'Email', placeholderText: 'Enter email address', inputType: 'email' }} />
 
                         <FormInput onChange={handleChange} formErrors={formErrors}
-                            props={{value: signupData.password, labelFor: 'password', labelTitle: 'Password', placeholderText: "6+ characters", inputType: 'password' }} />
+                            props={{value: signupData.password, labelFor: 'password', labelTitle: 'Password', placeholderText: "4+ characters", inputType: 'password' }} />
                         
                         <div className="flex-between">
                             <div className="flex-between mg-t-20">

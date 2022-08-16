@@ -91,7 +91,7 @@ const LoginPage = () => {
                             <FormInput onChange={handleChange} formErrors={formErrors}
                                 props={{ labelFor: 'email', labelTitle: 'Email', value: loginData.email, placeholderText: 'Enter your email', inputType: 'text' }} />
                             <FormInput onChange={handleChange} formErrors={formErrors}
-                                props={{ labelFor: 'password', value: loginData.password, labelTitle: 'Password', placeholderText: "Enter test", inputType: 'password' }} />
+                                props={{ labelFor: 'password', value: loginData.password, labelTitle: 'Password', placeholderText: "Enter password", inputType: 'password' }} />
                             {authError && <p className='orange-txt bold sm-txt mg-t-20'>{authError}</p>}
                             <div>
                                 <button type="submit" onClick={handleGuestLogin} className="btn primary-btn solid mg-t-30">
